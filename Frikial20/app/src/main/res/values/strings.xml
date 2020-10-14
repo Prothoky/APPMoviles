@@ -1,12 +1,21 @@
 <resources>
-    <string name="app_name">Frikial 2.0</string>
-    <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="app_name">Frikial2.0</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="Q_1">¿ Qué personaje es el que tiene un jetpack y es capaz de dar saltos a gran altura?</string>
+    <string name="AC_1">Boba Fett</string>
+    <string name="AW1_1">Darth Vader</string>
+    <string name="AW2_1">Luke Skywalker</string>
+    <string name="AW3_1">Angelina Jolie</string>
+
+
+    <string-array name="P_1">
+
+        <item> @string/Q_1 </item>
+        <item> @string/AC_1 </item>
+        <item> @string/AW1_1 </item>
+        <item> @string/AW2_1 </item>
+        <item> @string/AW3_1 </item>
+
+    </string-array>
+
 </resources>

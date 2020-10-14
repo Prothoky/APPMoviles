@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "Frikial 2.0"
+rootProject.name = "Frikial2.0"
