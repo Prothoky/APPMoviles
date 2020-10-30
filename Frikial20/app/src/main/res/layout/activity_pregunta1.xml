@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pregunta1">
+    tools:context=".QuestionsActivity">
 
     <TextView
         android:id="@+id/textView3"
@@ -23,12 +23,13 @@
         android:id="@+id/textView4"
         android:layout_width="223dp"
         android:layout_height="90dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="56dp"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:text="@string/Q_1" />
+        tools:text="@string/Q_1"
+        />
 
     <Button
         android:id="@+id/button2"
