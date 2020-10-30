@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Preguntas {
 
-    String Total_Q="total_questions";
-    String Correct_Answers="correct_answers";
+    public static String Total_Q="total_questions";
+    public static String Correct_Answers="correct_answers";
 
-    ArrayList<Pregunta> getQuestions(){
+    static ArrayList<Pregunta> getQuestions(){
         ArrayList<Pregunta> questionList = new ArrayList<Pregunta>();
 
         Pregunta P_1 = new Pregunta(
@@ -15,34 +15,12 @@ public class Preguntas {
         );
         questionList.add(P_1);
 
-        
+
         return  questionList;
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public class Pregunta {
+    public static class Pregunta {
 
         int id = 0;
         String pregunta = "";
