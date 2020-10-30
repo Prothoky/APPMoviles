@@ -2,40 +2,39 @@
     <string name="app_name">Frikial2.0</string>
 
     <string name="Q_1">¿Qué personaje es el que tiene un jetpack y es capaz de dar saltos a gran altura?</string>
-    <string name="AC_1">Boba Fett</string>
-    <string name="AW1_1">Darth Vader</string>
-    <string name="AW2_1">Luke Skywalker</string>
-    <string name="AW3_1">Angelina Jolie</string>
+    <string name="AW1_1">Boba Fett</string>
+    <string name="AW2_1">Darth Vader</string>
+    <string name="AW3_1">Luke Skywalker</string>
+    <string name="AW4_1">Angelina Jolie</string>
 
     <string name="Q_2">¿Cómo se llama el Lord Sith que posee una espada láser doble?</string>
     <string name="AW1_2">Darth Sidious</string>
     <string name="AW2_2">Darth Vader</string>
-    <string name="AC_2">Darth Maul</string>
-    <string name="AW3_2">Darth Tyranus</string>
+    <string name="AW3_2">Darth Maul</string>
+    <string name="AW4_2">Darth Tyranus</string>
 
     <string name="Q_3">¿Quién manda ejecutar la orden 66?</string>
-    <string name="AC_3">Emperador Palpatine</string>
-    <string name="AW1_3">Maestro Yoda</string>
-    <string name="AW2_3">Qui-Gon Jinn</string>
-    <string name="AW3_3">Darth Vader</string>
+    <string name="AW1_3">Emperador Palpatine</string>
+    <string name="AW2_3">Maestro Yoda</string>
+    <string name="AW3_3">Qui-Gon Jinn</string>
+    <string name="AW4_3">Darth Vader</string>
 
     <string name="Q_4">¿Qué planeta es destruído por la Estrella de la Muerte?</string>
     <string name="AW1_4">Coruscant</string>
     <string name="AW2_4">Tatooine</string>
-    <string name="AC_4">Alderaan</string>
-    <string name="AW3_4">Naboo</string>
+    <string name="AW3_4">Alderaan</string>
+    <string name="AW4_4">Naboo</string>
 
     <string name="Q_5">¿Cómo se llama la raza que aparece en la imagen?</string>
     <string name="AW1_5">Tusken</string>
     <string name="AW2_5">Ewok</string>
     <string name="AW3_5">Mon Calamari</string>
-    <string name="AC_5">Wookie</string>
+    <string name="AW4_5">Wookie</string>
 
 
     <string-array name="P_1">
 
         <item> @string/Q_1 </item>
-        <item> @string/AC_1 </item>
         <item> @string/AW1_1 </item>
         <item> @string/AW2_1 </item>
         <item> @string/AW3_1 </item>
