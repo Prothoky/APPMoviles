@@ -9,7 +9,10 @@ public class Preguntas {
 
     static ArrayList<Pregunta> getQuestions(){
         ArrayList<Pregunta> questionList = new ArrayList<Pregunta>();
-
+        /*Pregunta P_Ejemplo = new Pregunta(
+                -1, App.getResourcesStatic().getString(R.string.Q_1),R.drawable.image_q-1,,App.getResourcesStatic().getString(R.string.AW1_1), App.getResourcesStatic().getString(R.string.AW2_1),App.getResourcesStatic().getString(R.string.AW3_1), App.getResourcesStatic().getString(R.string.AW4_1), 1
+        );
+        */
         Pregunta P_1 = new Pregunta(
                 1, App.getResourcesStatic().getString(R.string.Q_1),0,App.getResourcesStatic().getString(R.string.AW1_1), App.getResourcesStatic().getString(R.string.AW2_1),App.getResourcesStatic().getString(R.string.AW3_1), App.getResourcesStatic().getString(R.string.AW4_1), 1
         );
@@ -23,11 +26,11 @@ public class Preguntas {
         );
         questionList.add(P_3);
         Pregunta P_4 = new Pregunta(
-                4, App.getResourcesStatic().getString(R.string.Q_4),0,App.getResourcesStatic().getString(R.string.AW1_4), App.getResourcesStatic().getString(R.string.AW2_4),App.getResourcesStatic().getString(R.string.AW3_4), App.getResourcesStatic().getString(R.string.AW4_4), 3
+                4, App.getResourcesStatic().getString(R.string.Q_4),0, App.getResourcesStatic().getString(R.string.AW1_4), App.getResourcesStatic().getString(R.string.AW2_4),App.getResourcesStatic().getString(R.string.AW3_4), App.getResourcesStatic().getString(R.string.AW4_4), 3
         );
         questionList.add(P_4);
         Pregunta P_5 = new Pregunta(
-                5, App.getResourcesStatic().getString(R.string.Q_5),0,App.getResourcesStatic().getString(R.string.AW1_5), App.getResourcesStatic().getString(R.string.AW2_5),App.getResourcesStatic().getString(R.string.AW3_5), App.getResourcesStatic().getString(R.string.AW4_5), 4
+                5, App.getResourcesStatic().getString(R.string.Q_5),R.drawable.image_q5 , App.getResourcesStatic().getString(R.string.AW1_5), App.getResourcesStatic().getString(R.string.AW2_5),App.getResourcesStatic().getString(R.string.AW3_5), App.getResourcesStatic().getString(R.string.AW4_5), 4
         );
         questionList.add(P_5);
 

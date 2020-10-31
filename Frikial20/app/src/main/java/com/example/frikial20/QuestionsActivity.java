@@ -1,6 +1,5 @@
 package com.example.frikial20;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,19 +13,18 @@ import java.util.ArrayList;
 
 public class QuestionsActivity extends AppCompatActivity {
 
-    private int mCurrentPosition = 1;
     private ArrayList<Preguntas.Pregunta> mQuestionsList = null;
-
-    private int mSelectedOptionPosition =0;
+    private int mCurrentPosition = 0;
     private int mCorrectAnswers = 0;
 
-    private TextView tv_question;
-    private ImageView iv_image;
-    private TextView tv_option_two;
-    private TextView tv_option_three;
-    private TextView tv_option_one;
-    private TextView tv_option_four;
-    private Button btn_submit;
+    private TextView mQuestion;
+    private ImageView mImage;
+    private Button mAnsw1;
+    private Button mAnsw2;
+    private Button mAnsw3;
+    private Button mAnsw4;
+    private int mCorrect_answer;
+    private int mTotal_questions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,90 +32,62 @@ public class QuestionsActivity extends AppCompatActivity {
         setContentView(R.layout.questions_activity);
         View v = findViewById(android.R.id.content);
 
-        tv_question = v.findViewById(R.id.tv_question);
-        iv_image = v.findViewById(R.id.iv_image);
-        tv_option_one = v.findViewById(R.id.tv_option_one);
-        tv_option_two = v.findViewById(R.id.tv_option_two);
-        tv_option_three = v.findViewById(R.id.tv_option_three);
-        tv_option_four = v.findViewById(R.id.tv_option_four);
-        btn_submit = v.findViewById(R.id.btn_submit);
+
+        mQuestion = v.findViewById(R.id.q_question);
+        mImage = v.findViewById(R.id.q_image);
+        mAnsw1 = v.findViewById(R.id.q_AnswOne);
+        mAnsw2 = v.findViewById(R.id.q_AnswTwo);
+        mAnsw3 = v.findViewById(R.id.q_AnswThree);
+        mAnsw4 = v.findViewById(R.id.q_AnswFour);
         mQuestionsList = Preguntas.getQuestions();
-
+        mTotal_questions = mQuestionsList.size();
         setQuestion();
-
     }
 
-    public void checkAnswer(View view) {
-        String answer = getResources().getResourceName(view.getId());
-        if(answer=="AC") {
-            Context context = getApplicationContext();
-            CharSequence text = "CORRECTO";
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
+    public void checkAnswer(View view){
+        int answer=-1;
+        //Hago 4 if porque no me deja hacerlo con un switch
+        if (view.getId()==mAnsw1.getId()) answer=1;
+        else if (view.getId()==mAnsw2.getId()) answer=2;
+        else if (view.getId()==mAnsw3.getId()) answer=3;
+        else if (view.getId()==mAnsw4.getId()) answer=4;
+
+        if(answer==-1){
+            Toast.makeText(this, "ALGO HA IDO MAL", Toast.LENGTH_SHORT).show();
+            finish();
         }
-        else{
-            Context context = getApplicationContext();
-            CharSequence text = answer;
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }
-    }
-
-
-    public void comprobacion_Answer(){
-
-        if (mSelectedOptionPosition == 0) {
-
+        else {
             mCurrentPosition++;
-
-            if(mCurrentPosition <= mQuestionsList.size())
-                    setQuestion();
-            else{
-
-                Intent intent = new Intent(this , EndActivity.class);
-
-                intent.putExtra(Preguntas.Correct_Answers, mCorrectAnswers);
-                intent.putExtra(Preguntas.Total_Q, mQuestionsList.size());
+            if (mCorrect_answer == answer) {
+                mCorrectAnswers++;
+                Toast.makeText(this, "CORRECTO", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "INCORRECTO", Toast.LENGTH_SHORT).show();
+            }
+            if (mCurrentPosition < mTotal_questions) {
+                setQuestion();
+            } else {
+                Intent intent = new Intent(this, EndActivity.class);
+                intent.putExtra("totalQuestions", mTotal_questions);
+                intent.putExtra("correctAnswers", mCorrectAnswers);
                 startActivity(intent);
                 finish();
             }
-
-        } else {
-            Preguntas.Pregunta question = mQuestionsList.get(mCurrentPosition - 1);
-
-            // This is to check if the answer is wrong
-            if (question.AnswCorrect != mSelectedOptionPosition) {
-                //Answer wrong
-            }
-            else {
-                mCorrectAnswers++;
-            }
-
-            if (mCurrentPosition == mQuestionsList.size()) {
-                btn_submit.setText("FINISH");
-            } else {
-                btn_submit.setText("GO TO NEXT QUESTION");
-            }
-
-            mSelectedOptionPosition = 0;
         }
+
     }
 
-    /**
-     * A function for setting the question to UI components.
-     */
     private void setQuestion() {
 
-        Preguntas.Pregunta question = mQuestionsList.get(mCurrentPosition - 1);
+        Preguntas.Pregunta question = mQuestionsList.get(mCurrentPosition);
 
-        tv_question.setText(question.pregunta);
-        iv_image.setImageResource(question.image);
-        tv_option_one.setText(question.AnswOne);
-        tv_option_two.setText(question.AnswTwo);
-        tv_option_three.setText(question.AnswThree);
-        tv_option_four.setText(question.AnswFour);
+        mQuestion.setText(question.pregunta);
+        mImage.setImageResource(question.image);
+        mAnsw1.setText(question.AnswOne);
+        mAnsw2.setText(question.AnswTwo);
+        mAnsw3.setText(question.AnswThree);
+        mAnsw4.setText(question.AnswFour);
+        mCorrect_answer = question.AnswCorrect;
     }
 
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -11,37 +12,34 @@
 
 
         <TextView
-            android:id="@+id/tv_question"
+            android:id="@+id/q_question"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_height="84dp"
             android:gravity="center"
             android:textColor="#363A43"
             android:textSize="22sp"
             tools:text="What country does this flag belong to?" />
 
         <ImageView
-            android:id="@+id/iv_image"
-            android:layout_width="wrap_content"
+            android:id="@+id/q_image"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:contentDescription="image"
-            />
-        <!--tools:src="@drawable/ic_flag_of_germany"-->
+            android:contentDescription="image"/>
 
-        <TextView
-            android:id="@+id/tv_option_one"
+        <Button
+            android:id="@+id/q_AnswOne"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
+            android:onClick="checkAnswer"
             android:padding="15dp"
             android:textColor="#7A8089"
             android:textSize="18sp"
             tools:text="Apple" />
 
-        <TextView
-            android:id="@+id/tv_option_two"
+        <Button
+            android:id="@+id/q_AnswTwo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -49,13 +47,14 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"
+            android:onClick="checkAnswer"
             android:padding="15dp"
             android:textColor="#7A8089"
             android:textSize="18sp"
             tools:text="Google" />
 
-        <TextView
-            android:id="@+id/tv_option_three"
+        <Button
+            android:id="@+id/q_AnswThree"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -63,13 +62,14 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"
+            android:onClick="checkAnswer"
             android:padding="15dp"
             android:textColor="#7A8089"
             android:textSize="18sp"
             tools:text="Android Inc." />
 
-        <TextView
-            android:id="@+id/tv_option_four"
+        <Button
+            android:id="@+id/q_AnswFour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -77,19 +77,10 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"
+            android:onClick="checkAnswer"
             android:padding="15dp"
             android:textColor="#7A8089"
             android:textSize="18sp"
             tools:text="Nokia" />
 
-        <Button
-            android:id="@+id/btn_submit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@color/colorPrimary"
-            android:text="SUBMIT"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
 </LinearLayout>
