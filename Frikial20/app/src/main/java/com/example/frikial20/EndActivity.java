@@ -18,7 +18,7 @@ public class EndActivity extends AppCompatActivity {
         if(intTotalAnswers != 0){
             TextView mTotalAnswers = v.findViewById(R.id.totalAnswers);
             TextView mCorrectAnswers = v.findViewById(R.id.correctAnswers);
-            mTotalAnswers.setText("Ha respondido un total de "+mTotalAnswers+" preguntas");
+            mTotalAnswers.setText("Ha respondido un total de "+intTotalAnswers+" preguntas");
             mCorrectAnswers.setText("De las cuales "+ intCorrectAnswers+" han sido respuestas correctas");
         }
     }
