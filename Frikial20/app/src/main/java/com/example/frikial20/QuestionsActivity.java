@@ -19,6 +19,7 @@ public class QuestionsActivity extends AppCompatActivity {
     private int mScore =0;
 
     private TextView mQuestion;
+    private TextView mTVScore;
     private ImageView mImage;
     private Button mAns1;
     private Button mAns2;
@@ -33,6 +34,7 @@ public class QuestionsActivity extends AppCompatActivity {
         setContentView(R.layout.questions_activity);
         View v = findViewById(android.R.id.content);
 
+        mTVScore = v.findViewById(R.id.score);
         mQuestion = v.findViewById(R.id.q_question);
         mImage = v.findViewById(R.id.q_image);
         mAns1 = v.findViewById(R.id.q_AnswOne);
@@ -42,6 +44,7 @@ public class QuestionsActivity extends AppCompatActivity {
         mQuestionsList = Preguntas.getQuestions();
         mTotal_questions = mQuestionsList.size();
         setQuestion();
+        updateScore();
     }
 
     public void checkAnswer(View view){
@@ -66,6 +69,7 @@ public class QuestionsActivity extends AppCompatActivity {
                 mScore-=2;
                 Toast.makeText(this, "INCORRECTO", Toast.LENGTH_SHORT).show();
             }
+            updateScore();
             if (mCurrentPosition < mTotal_questions) {
                 setQuestion();
             } else {
@@ -93,4 +97,7 @@ public class QuestionsActivity extends AppCompatActivity {
         mCorrect_answer = question.AnsCorrect;
     }
 
+    private void updateScore(){
+        mTVScore.setText("Puntuación: " + mScore);
+    }
 }
