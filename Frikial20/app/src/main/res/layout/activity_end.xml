@@ -11,37 +11,64 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="214dp"
-        android:layout_height="109dp"
+        android:layout_width="wrap_content"
+        android:layout_height="260dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        app:srcCompat="@drawable/logo"
+        tools:ignore="ContentDescription" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#555555"
+        android:orientation="vertical"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_gravity="center_horizontal"
-        app:srcCompat="@drawable/logo" />
+        >
+        <TextView
+            android:id="@+id/totalAnswers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:text="Ha respondido un total de X preguntas"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
-    <TextView
-        android:id="@+id/totalAnswers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:gravity="center"
-        android:text="Ha respondido un total de X preguntas"
-        android:textColor="@android:color/white"
+        <TextView
 
-        android:textSize="25sp"
-        android:textStyle="bold" />
+            android:id="@+id/correctAnswers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="De las cuales N han sido correctas"
 
-    <TextView
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
-        android:id="@+id/correctAnswers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:gravity="center"
-        android:text="De las cuales N han sido correctas"
+        <TextView
+            android:id="@+id/scoreFinal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="Tu puntuación ha sido de: M"
+            android:textColor="@android:color/white"
 
-        android:textColor="@android:color/white"
-        android:textSize="25sp"
-        android:textStyle="bold" />
+            android:textSize="25sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/restart_button"
@@ -49,9 +76,11 @@
         android:layout_height="wrap_content"
         android:onClick="restart"
         android:text="Volver a jugar"
+        android:textAlignment="center"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/black"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/quit_button"
@@ -59,9 +88,11 @@
         android:layout_height="wrap_content"
         android:onClick="exit"
         android:text="Salir"
+        android:textAlignment="center"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/black"
+        tools:ignore="HardcodedText" />
 
 
 </LinearLayout>

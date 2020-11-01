@@ -16,13 +16,14 @@ public class QuestionsActivity extends AppCompatActivity {
     private ArrayList<Preguntas.Pregunta> mQuestionsList = null;
     private int mCurrentPosition = 0;
     private int mCorrectAnswers = 0;
+    private int mScore =0;
 
     private TextView mQuestion;
     private ImageView mImage;
-    private Button mAnsw1;
-    private Button mAnsw2;
-    private Button mAnsw3;
-    private Button mAnsw4;
+    private Button mAns1;
+    private Button mAns2;
+    private Button mAns3;
+    private Button mAns4;
     private int mCorrect_answer;
     private int mTotal_questions;
 
@@ -32,13 +33,12 @@ public class QuestionsActivity extends AppCompatActivity {
         setContentView(R.layout.questions_activity);
         View v = findViewById(android.R.id.content);
 
-
         mQuestion = v.findViewById(R.id.q_question);
         mImage = v.findViewById(R.id.q_image);
-        mAnsw1 = v.findViewById(R.id.q_AnswOne);
-        mAnsw2 = v.findViewById(R.id.q_AnswTwo);
-        mAnsw3 = v.findViewById(R.id.q_AnswThree);
-        mAnsw4 = v.findViewById(R.id.q_AnswFour);
+        mAns1 = v.findViewById(R.id.q_AnswOne);
+        mAns2 = v.findViewById(R.id.q_AnswTwo);
+        mAns3 = v.findViewById(R.id.q_AnswThree);
+        mAns4 = v.findViewById(R.id.q_AnswFour);
         mQuestionsList = Preguntas.getQuestions();
         mTotal_questions = mQuestionsList.size();
         setQuestion();
@@ -47,10 +47,10 @@ public class QuestionsActivity extends AppCompatActivity {
     public void checkAnswer(View view){
         int answer=-1;
         //Hago 4 if porque no me deja hacerlo con un switch
-        if (view.getId()==mAnsw1.getId()) answer=1;
-        else if (view.getId()==mAnsw2.getId()) answer=2;
-        else if (view.getId()==mAnsw3.getId()) answer=3;
-        else if (view.getId()==mAnsw4.getId()) answer=4;
+        if (view.getId()== mAns1.getId()) answer=1;
+        else if (view.getId()== mAns2.getId()) answer=2;
+        else if (view.getId()== mAns3.getId()) answer=3;
+        else if (view.getId()== mAns4.getId()) answer=4;
 
         if(answer==-1){
             Toast.makeText(this, "ALGO HA IDO MAL", Toast.LENGTH_SHORT).show();
@@ -59,9 +59,11 @@ public class QuestionsActivity extends AppCompatActivity {
         else {
             mCurrentPosition++;
             if (mCorrect_answer == answer) {
+                mScore+=3;
                 mCorrectAnswers++;
                 Toast.makeText(this, "CORRECTO", Toast.LENGTH_SHORT).show();
             } else {
+                mScore-=2;
                 Toast.makeText(this, "INCORRECTO", Toast.LENGTH_SHORT).show();
             }
             if (mCurrentPosition < mTotal_questions) {
@@ -70,6 +72,7 @@ public class QuestionsActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, EndActivity.class);
                 intent.putExtra("totalQuestions", mTotal_questions);
                 intent.putExtra("correctAnswers", mCorrectAnswers);
+                intent.putExtra("score", mScore);
                 startActivity(intent);
                 finish();
             }
@@ -81,13 +84,13 @@ public class QuestionsActivity extends AppCompatActivity {
 
         Preguntas.Pregunta question = mQuestionsList.get(mCurrentPosition);
 
-        mQuestion.setText(question.pregunta);
+        mQuestion.setText(question.question);
         mImage.setImageResource(question.image);
-        mAnsw1.setText(question.AnswOne);
-        mAnsw2.setText(question.AnswTwo);
-        mAnsw3.setText(question.AnswThree);
-        mAnsw4.setText(question.AnswFour);
-        mCorrect_answer = question.AnswCorrect;
+        mAns1.setText(question.AnsOne);
+        mAns2.setText(question.AnsTwo);
+        mAns3.setText(question.AnsThree);
+        mAns4.setText(question.AnsFour);
+        mCorrect_answer = question.AnsCorrect;
     }
 
 }

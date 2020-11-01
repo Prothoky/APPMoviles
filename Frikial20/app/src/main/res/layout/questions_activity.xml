@@ -1,86 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:fillViewport="true"
-    tools:context=".QuestionsActivity">
+    android:layout_centerVertical="false"
+    android:layout_gravity="center"
+    android:background="@drawable/background"
+    android:gravity="center">
 
-
-        <TextView
-            android:id="@+id/q_question"
-            android:layout_width="match_parent"
-            android:layout_height="84dp"
-            android:gravity="center"
-            android:textColor="#363A43"
-            android:textSize="22sp"
-            tools:text="What country does this flag belong to?" />
-
-        <ImageView
-            android:id="@+id/q_image"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="image"/>
-
-        <Button
-            android:id="@+id/q_AnswOne"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:fillViewport="true"
             android:gravity="center"
-            android:onClick="checkAnswer"
-            android:padding="15dp"
-            android:textColor="#7A8089"
-            android:textSize="18sp"
-            tools:text="Apple" />
+            android:orientation="vertical"
+            android:padding="16dp"
+            tools:context=".QuestionsActivity">
 
-        <Button
-            android:id="@+id/q_AnswTwo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:gravity="center"
-            android:onClick="checkAnswer"
-            android:padding="15dp"
-            android:textColor="#7A8089"
-            android:textSize="18sp"
-            tools:text="Google" />
+                <TextView
+                    android:id="@+id/q_question"
+                    android:layout_width="match_parent"
+                    android:layout_height="84dp"
+                    android:background="#151515"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="22sp"
+                    tools:text="What country does this flag belong to?" />
 
-        <Button
-            android:id="@+id/q_AnswThree"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:gravity="center"
-            android:onClick="checkAnswer"
-            android:padding="15dp"
-            android:textColor="#7A8089"
-            android:textSize="18sp"
-            tools:text="Android Inc." />
+                <ImageView
+                    android:id="@+id/q_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="ContentDescription" />
 
-        <Button
-            android:id="@+id/q_AnswFour"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:gravity="center"
-            android:onClick="checkAnswer"
-            android:padding="15dp"
-            android:textColor="#7A8089"
-            android:textSize="18sp"
-            tools:text="Nokia" />
 
-</LinearLayout>
+                <Button
+                    android:id="@+id/q_AnswOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="#555555"
+                    android:gravity="center"
+                    android:onClick="checkAnswer"
+                    android:padding="15dp"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    tools:text="Apple" />
+
+                <Button
+                    android:id="@+id/q_AnswTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:backgroundTint="#555555"
+                    android:gravity="center"
+                    android:onClick="checkAnswer"
+                    android:padding="15dp"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    tools:text="Google" />
+
+                <Button
+                    android:id="@+id/q_AnswThree"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:backgroundTint="#555555"
+                    android:gravity="center"
+                    android:onClick="checkAnswer"
+                    android:padding="15dp"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    tools:text="Android Inc." />
+
+                <Button
+                    android:id="@+id/q_AnswFour"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:backgroundTint="#555555"
+                    android:gravity="center"
+                    android:onClick="checkAnswer"
+                    android:padding="15dp"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    tools:text="Nokia" />
+
+        </LinearLayout>
+
+</ScrollView>
