@@ -1,22 +1,28 @@
 package com.example.frikial20;
 
-import android.content.Context;
 import android.content.Intent;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    // View v;
+    View v;
+    TextInputEditText textInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        v = findViewById(android.R.id.content);
+        v.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+
+        textInput = v.findViewById(R.id.InputText_name);
+
         /* EJEMPLO DE USO SharedPreferences (descomentar View v atributo de clase y crear 2 widgets de texto)
         // Recibe input de usuario en un *supuesto* campo de texto y lo guarda en SharedPreferences
         // Después lee de esa SharedPreferences para mostrarlo por pantalla la próxima vez que se inicie
@@ -31,10 +37,16 @@ public class MainActivity extends AppCompatActivity {
         TextView textView = (TextView) v.findViewById(R.id.sharedPrefsTestWidget);  // obtiene *supuesto* campo de entrada de texto
         SharedPrefs.saveString(this, "name", textView.getText().toString());    // guarda el contenido en una sharedPref con clave "name"
         */
+        if(textInput.getText().toString().isEmpty()){
+            Toast.makeText(this, "Por favor introduce un nombre", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(this, "Empezamos", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(this, QuestionsActivity.class);
+            i.putExtra("name", textInput.getText().toString());
+            startActivity(i);
+            finish();
+        }
 
-        Toast.makeText(this, "Empezamos", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(this, QuestionsActivity.class);
-        startActivity(i);
-        finish();
     }
 }

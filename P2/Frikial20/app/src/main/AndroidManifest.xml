@@ -13,10 +13,13 @@
         <activity
             android:name=".EndActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarTheme"
             android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".QuestionsActivity"
             android:screenOrientation="portrait"
+
+            android:theme="@style/NoActionBarTheme"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".MainActivity"

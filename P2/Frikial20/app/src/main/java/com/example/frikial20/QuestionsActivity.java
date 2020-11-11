@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 
 public class QuestionsActivity extends AppCompatActivity {
@@ -30,9 +29,12 @@ public class QuestionsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        String Nombre = getIntent().getStringExtra("name");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.questions_activity);
         View v = findViewById(android.R.id.content);
+
+        v.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
 
         mTVScore = v.findViewById(R.id.score);
         mQuestion = v.findViewById(R.id.q_question);

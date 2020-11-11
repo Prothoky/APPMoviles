@@ -18,6 +18,8 @@ public class EndActivity extends AppCompatActivity {
         setContentView(R.layout.activity_end);
         View v = findViewById(android.R.id.content);
 
+        v.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+
         if(intTotalAnswers != 0){
             TextView mTotalAnswers = v.findViewById(R.id.totalAnswers);
             TextView mCorrectAnswers = v.findViewById(R.id.correctAnswers);

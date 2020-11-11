@@ -33,15 +33,71 @@
         app:srcCompat="@drawable/logo"
         tools:ignore="ContentDescription" />
 
-    <Button
-        android:id="@+id/start_button"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="preguntas"
-        android:text="Pulse para empezar"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        tools:ignore="HardcodedText" />
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@android:color/white"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#323232"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Introduce tu nombre:"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textColorHint="@color/colorPrimaryDark"
+                app:boxStrokeColor="#FF0000">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/InputText_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:hint="Nombre"
+                    android:shadowColor="#FF0000"
+                    android:textColor="#FFFFFF"
+                    android:textColorHighlight="#FF0000"
+                    android:textColorHint="@android:color/holo_red_dark"
+                    android:textColorLink="#FF0000"
+                    tools:ignore="HardcodedText" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/start_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="preguntas"
+                android:text="Empezar"
+                android:textColor="@android:color/black"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>
