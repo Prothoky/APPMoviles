@@ -2,6 +2,7 @@ package com.example.mypiano;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -40,5 +41,20 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         mediaPlayer.release();
         mediaPlayer = null;
+    }
+
+    public void goToFreePlay(View view) {
+        Intent i = new Intent(this, FreePlayActivity.class);
+        startActivity(i);
+    }
+
+    public void goToLessons(View view) {
+        Intent i = new Intent(this, LessonsActivity.class);
+        startActivity(i);
+    }
+
+    public void goToSongs(View view) {
+        Intent i = new Intent(this, SongsActivity.class);
+        startActivity(i);
     }
 }

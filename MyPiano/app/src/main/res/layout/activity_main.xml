@@ -18,45 +18,46 @@
         app:srcCompat="@drawable/logo" />
 
     <ImageView
-        android:id="@+id/img_activity1"
-        android:layout_width="208dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_logo"
-        app:srcCompat="@drawable/freeplay_text" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="212dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_activity1"
-        app:srcCompat="@drawable/lessons_text" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="214dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:srcCompat="@drawable/songs_text" />
-
-    <ImageView
         android:id="@+id/imageView5"
         android:layout_width="251dp"
         android:layout_height="215dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/btn_songs"
         app:srcCompat="@drawable/toypiano" />
+
+    <Button
+        android:id="@+id/btn_freePlay"
+        android:layout_width="207dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/freeplay_text"
+        android:onClick="goToFreePlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo" />
+
+    <Button
+        android:id="@+id/btn_lessons"
+        android:layout_width="210dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/lessons_text"
+        android:onClick="goToLessons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_freePlay" />
+
+    <Button
+        android:id="@+id/btn_songs"
+        android:layout_width="211dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/songs_text"
+        android:onClick="goToSongs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_lessons" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
