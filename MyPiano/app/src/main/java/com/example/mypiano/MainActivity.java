@@ -11,13 +11,6 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-    /*
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
-    */
     MediaPlayer mediaPlayer;
 
     @Override
@@ -28,13 +21,6 @@ public class MainActivity extends AppCompatActivity {
         v.setBackgroundColor(Color.WHITE);
         v.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
         AudioController.PlayBackground(this);
-        //Button buttonPlay = (Button) findViewById(R.id.button_play);
-        //Button buttonPause = (Button) findViewById(R.id.button_pause);
-        //Button buttonStop = (Button) findViewById(R.id.button_stop);
-        //MediaPlayer mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.audio_file);
-        //buttonPlay.setOnClickListener(new View.OnClickListener() { @Override public void onClick(View v) { mediaPlayer.start(); } });
-        //buttonPause.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) { mediaPlayer.pause();} });
-        //buttonStop.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) { mediaPlayer.stop();} });
     }
 
     @Override
@@ -42,11 +28,11 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         AudioController.PlayBackground(this);
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mediaPlayer.release();
-        mediaPlayer = null;
+        AudioController.StopMusic();
     }
 
     public void goToFreePlay(View view) {
