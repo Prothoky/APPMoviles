@@ -12,7 +12,17 @@ import java.util.ArrayList;
 
 public class QuestionsActivity extends AppCompatActivity {
 
-    private ArrayList<Preguntas.Pregunta> mQuestionsList = null;
+    //Estas variables serán utilizadas para mostrar un determinado numero y tipo de pregunta
+
+    private String name;
+    private int numberQuestions;
+    private boolean hardcore;
+    private boolean image;
+    private boolean sound;
+
+    //Estas variables serán utilizadas para mostrar un determinado numero y tipo de pregunta
+
+    private ArrayList<Preguntas.Pregunta> mQuestionsList;
     private int mCurrentPosition = 0;
     private int mCorrectAnswers = 0;
     private int mScore =0;
@@ -35,6 +45,17 @@ public class QuestionsActivity extends AppCompatActivity {
         View v = findViewById(android.R.id.content);
 
         v.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+
+        //Estas variables serán utilizadas para mostrar un determinado numero y tipo de pregunta
+        //Estas variables se modifican en el activity config
+
+        name = SharedPrefs.getString(this, "name" ,"");
+        numberQuestions = SharedPrefs.getInt(this, "numberQuestions",15);
+        hardcore = SharedPrefs.getBoolean(this, "hardcore",false);
+        image = SharedPrefs.getBoolean(this, "image",true);
+        sound = SharedPrefs.getBoolean(this, "sound",true);
+
+        //Estas variables serán utilizadas para mostrar un determinado numero y tipo de pregunta
 
         mTVScore = v.findViewById(R.id.score);
         mQuestion = v.findViewById(R.id.q_question);
