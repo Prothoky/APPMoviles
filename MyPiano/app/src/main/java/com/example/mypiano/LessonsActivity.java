@@ -2,7 +2,11 @@ package com.example.mypiano;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 public class LessonsActivity extends AppCompatActivity {
 
@@ -10,5 +14,9 @@ public class LessonsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lessons);
+        VideoView videoView = (VideoView) findViewById(R.id.videoView);
+        videoView.setVideoURI(Uri.parse("android.resource://" +getPackageName()+ "/" +R.raw.video));
+        videoView.setMediaController(new MediaController(this));videoView.requestFocus();
+        videoView.start();
     }
 }
