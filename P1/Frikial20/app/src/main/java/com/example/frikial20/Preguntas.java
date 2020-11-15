@@ -4,11 +4,8 @@ import java.util.ArrayList;
 
 public class Preguntas {
 
-    public static String Total_Q="total_questions";
-    public static String Correct_Answers="correct_answers";
-
     static ArrayList<Pregunta> getQuestions(){
-        ArrayList<Pregunta> questionList = new ArrayList<Pregunta>();
+        ArrayList<Pregunta> questionList = new ArrayList<>();
         /*Pregunta P_Ejemplo = new Pregunta(
                 -1, App.getResourcesStatic().getString(R.string.Q_1),R.drawable.image_q-1,,App.getResourcesStatic().getString(R.string.AW1_1), App.getResourcesStatic().getString(R.string.AW2_1),App.getResourcesStatic().getString(R.string.AW3_1), App.getResourcesStatic().getString(R.string.AW4_1), 1
         );

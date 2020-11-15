@@ -14,6 +14,7 @@ public class EndActivity extends AppCompatActivity {
         int intTotalAnswers = getIntent().getIntExtra("totalQuestions", 0);
         int intCorrectAnswers = getIntent().getIntExtra("correctAnswers", 0);
         int intScore = getIntent().getIntExtra("score", 0);
+        
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end);
         View v = findViewById(android.R.id.content);
