@@ -96,10 +96,16 @@ public class QuestionsActivity extends AppCompatActivity {
         mAns2.setText(question.AnsTwo);
         mAns3.setText(question.AnsThree);
         mAns4.setText(question.AnsFour);
-        mCorrect_answer = question.AnsCorrect;
+        mCorrect_answer = question.AnsCorrect[0];
     }
 
     private void updateScore(){
         mTVScore.setText("Puntuación: " + mScore);
+    }
+
+    public void optionsSelected(View view){
+        Intent i = new Intent(this, Config.class);
+        startActivity(i);
+        finish();
     }
 }

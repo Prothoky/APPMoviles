@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         else{
             Toast.makeText(this, "Empezamos", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, QuestionsActivity.class);
+            SharedPrefs.saveString(this, "name", textInput.getText().toString());
             i.putExtra("name", textInput.getText().toString());
             startActivity(i);
             finish();
