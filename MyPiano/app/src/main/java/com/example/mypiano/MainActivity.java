@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         View v = findViewById(android.R.id.content);
         v.setBackgroundColor(Color.WHITE);
         v.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+        AudioController.PlayBackground(this);
         //Button buttonPlay = (Button) findViewById(R.id.button_play);
         //Button buttonPause = (Button) findViewById(R.id.button_pause);
         //Button buttonStop = (Button) findViewById(R.id.button_stop);

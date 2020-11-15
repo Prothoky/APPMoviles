@@ -7,48 +7,53 @@
     tools:context=".SongsActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_chopin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/chopin"
+        android:onClick="playChopin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_clementi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/clementi"
+        android:onClick="playClementi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_chopin" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btn_debussy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/debussy"
+        android:onClick="playDebussy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_clementi" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btn_faure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/faure"
+        android:onClick="playFaure"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_debussy" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btn_schumann"
         android:layout_width="372dp"
         android:layout_height="80dp"
         android:background="@drawable/schumann"
+        android:onClick="playSchumann"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_faure" />
 </androidx.constraintlayout.widget.ConstraintLayout>
