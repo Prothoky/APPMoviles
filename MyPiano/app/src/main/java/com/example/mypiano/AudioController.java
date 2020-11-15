@@ -13,7 +13,14 @@ public class AudioController {
         }
         mediaPlayer = MediaPlayer.create(context, R.raw.burgmuller);
         mediaPlayer.setLooping(true);
+        mediaPlayer.setVolume(0.3f, 0.3f);
         mediaPlayer.start();
+    }
+
+    public static void StopMusic() {
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+        }
     }
 
     public static void PlaySong(Context context, int index) {

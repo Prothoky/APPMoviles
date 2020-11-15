@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
         //buttonStop.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) { mediaPlayer.stop();} });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        AudioController.PlayBackground(this);
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();
