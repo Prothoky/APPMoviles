@@ -2,12 +2,17 @@ package com.example.mypiano;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +31,26 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        AudioController.PlayBackground(this);
+        if (!AudioController.isPlaying()) {
+            AudioController.PlayBackground(this);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        if (this.isFinishing()) {
+            AudioController.StopMusic();
+        }
+        Context context = getApplicationContext();
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningTaskInfo> taskInfo = activityManager.getRunningTasks(1);
+        if (!taskInfo.isEmpty()) {
+            ComponentName topActivity = taskInfo.get(0).topActivity;
+            if (!topActivity.getPackageName().equals(context.getPackageName())) {
+                AudioController.StopMusic();
+            }
+        }
+        super.onPause();
     }
 
     @Override

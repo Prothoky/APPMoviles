@@ -23,6 +23,10 @@ public class AudioController {
         }
     }
 
+    public static boolean isPlaying() {
+        return mediaPlayer.isPlaying();
+    }
+
     public static void PlaySong(Context context, int index) {
         mediaPlayer.stop();
         switch(index) {
