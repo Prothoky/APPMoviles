@@ -46,6 +46,8 @@ public class Preguntas {
         int id;
         String question;
         int image;
+        int video=-1;
+        int audio=-1;
         String AnsOne;
         String AnsTwo;
         String AnsThree;
@@ -99,6 +101,39 @@ public class Preguntas {
             this.AnsImgTwo = ansImgTwo;
             this.AnsImgThree = ansImgThree;
             this.AnsImgFour = ansImgFour;
+            this.AnsCorrect = ansCorrect;
+        }
+        public Pregunta(int id, int audio, int video, String ansOne, String ansTwo, String ansThree, String ansFour, int[] ansCorrect) {
+            this.type = 3;
+            this.id = id;
+            this.question = "";
+            this.audio = audio;
+            this.video = video;
+            this.image = -1;
+            this.AnsOne = ansOne;
+            this.AnsTwo = ansTwo;
+            this.AnsThree = ansThree;
+            this.AnsFour = ansFour;
+            this.AnsImgOne = -1;
+            this.AnsImgTwo = -1;
+            this.AnsImgThree = -1;
+            this.AnsImgFour = -1;
+            this.AnsCorrect = ansCorrect;
+        }
+        public Pregunta(int id, int video, String ansOne, String ansTwo, String ansThree, String ansFour, int[] ansCorrect) {
+            this.type = 4;
+            this.id = id;
+            this.question = "";
+            this.video = video;
+            this.image = -1;
+            this.AnsOne = ansOne;
+            this.AnsTwo = ansTwo;
+            this.AnsThree = ansThree;
+            this.AnsFour = ansFour;
+            this.AnsImgOne = -1;
+            this.AnsImgTwo = -1;
+            this.AnsImgThree = -1;
+            this.AnsImgFour = -1;
             this.AnsCorrect = ansCorrect;
         }
     }

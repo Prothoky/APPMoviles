@@ -31,8 +31,14 @@ public class Intro extends AppCompatActivity {
     public void goScoreboard (View view){
 
         Intent i = new Intent(this, Scoreboard.class);
+        i.putExtra("prevActivity", "Intro.class");
         startActivity(i);
         finish();
 
+    }
+
+    public void exit(View view){
+        Toast.makeText(this, "¡Gracias por jugar!", Toast.LENGTH_SHORT).show();
+        finishAndRemoveTask();
     }
 }

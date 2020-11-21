@@ -92,6 +92,14 @@ public class QuestionsActivity extends AppCompatActivity {
             } else {
                 mScore-=2;
                 Toast.makeText(this, "INCORRECTO", Toast.LENGTH_SHORT).show();
+                if(hardcore){
+                    Intent intent = new Intent(this, EndActivity.class);
+                    intent.putExtra("totalQuestions", mCurrentPosition);
+                    intent.putExtra("correctAnswers", mCorrectAnswers);
+                    intent.putExtra("score", mScore);
+                    startActivity(intent);
+                    finish();
+                }
             }
             if (mCurrentPosition < mTotal_questions) {
                 setQuestion();
@@ -125,6 +133,7 @@ public class QuestionsActivity extends AppCompatActivity {
 
     public void optionsSelected(View view){
         Intent i = new Intent(this, Config.class);
+        i.putExtra("prevActivity", "QuestionsActivity.class");
         startActivity(i);
         finish();
     }

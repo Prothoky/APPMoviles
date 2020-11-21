@@ -78,9 +78,28 @@ public class Config extends AppCompatActivity {
         if(!textInput.getText().toString().isEmpty()){
             SharedPrefs.saveString(this, "name", textInput.getText().toString());
         }
-        Intent i = new Intent(this, QuestionsActivity.class);
-        startActivity(i);
-        finish();
+        String prevScene = getIntent().getStringExtra("prevActivity");
+
+        switch (prevScene){
+            case "Intro.class":{
+                Intent i = new Intent(this, Intro.class);
+                startActivity(i);
+                finish();
+                break;
+            }
+            case "QuestionsActivity.class":{
+                Intent i = new Intent(this, QuestionsActivity.class);
+                startActivity(i);
+                finish();
+                break;
+            }
+            default:{
+                Intent i = new Intent(this, Intro.class);
+                startActivity(i);
+                finish();
+            }
+        }
+
     }
 
     private void checkSwitchs(){

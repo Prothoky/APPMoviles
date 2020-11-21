@@ -28,6 +28,8 @@ public class EndActivity extends AppCompatActivity {
             mCorrectAnswers.setText("De las cuales "+ intCorrectAnswers+" han sido respuestas correctas");
             mScore.setText("Tu puntuación final ha sido de: "+ intScore);
         }
+
+        //saveInfoPlayer();
     }
 
     public void restart(View view) {
@@ -38,7 +40,16 @@ public class EndActivity extends AppCompatActivity {
     }
 
     public void exit(View view) {
-        Toast.makeText(this, "¡Gracias por jugar!", Toast.LENGTH_SHORT).show();
-        finishAndRemoveTask();
+        Intent i = new Intent(this, Intro.class);
+        startActivity(i);
+        finish();
+    }
+
+    private void saveInfoPlayer(int intScore , int intCorrectAnswers, int intTotalAnswers){
+
+        String name  =  SharedPrefs.getString(this,"name");
+        Score player = new Score(name, intScore, intCorrectAnswers, intTotalAnswers-intCorrectAnswers, intTotalAnswers);
+
+        //SharedPrefs.saveScore(this, "player", player);
     }
 }

@@ -12,6 +12,7 @@ public class SharedPrefs {
     //here you can centralize all your shared prefs keys
     public static String KEY_MY_SHARED_BOOLEAN = "my_shared_boolean";
     public static String KEY_MY_SHARED_STRING= "my_shared_name";
+    //public static Score KEY_MY_SHARED_SCORE = "my_shared_score";
 
 
     private static SharedPreferences getPrefs(Context context) {

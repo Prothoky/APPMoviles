@@ -10,8 +10,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Scoreboard"></activity>
-        <activity android:name=".Intro" />
+        <activity
+            android:name=".Scoreboard"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarTheme"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".Intro"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarTheme"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".Config"
             android:screenOrientation="portrait"
