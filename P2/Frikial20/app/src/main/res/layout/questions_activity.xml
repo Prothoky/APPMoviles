@@ -25,20 +25,7 @@
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="16dp">
-                        <!--
-                        <TextView
-                            android:id="@+id/score"
-                            android:layout_width="wrap_content"
-                            android:layout_height="46dp"
-                            android:layout_gravity="right"
-                            android:layout_marginBottom="10dp"
-                            android:background="#A8A8A8"
-                            android:gravity="end"
-                            android:textAlignment="textEnd"
-                            android:textColor="@android:color/black"
-                            android:textSize="22sp"
-                            tools:text="Puntuación: N" />
-                        -->
+
                         <TextView
                             android:id="@+id/questions_pos"
                             android:layout_width="match_parent"
@@ -81,14 +68,6 @@
                     android:textSize="22sp"
                     tools:text="What country does this flag belong to?" />
 
-                <ImageButton
-                    android:id="@+id/q_audio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="play"
-                    app:srcCompat="@android:drawable/ic_media_play"
-                    tools:ignore="ContentDescription" />
-
                 <VideoView
                     android:id="@+id/q_video"
                     android:layout_width="match_parent"
@@ -96,10 +75,18 @@
 
                 <ImageView
                     android:id="@+id/q_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="354dp"
+                    android:layout_height="285dp"
                     tools:ignore="ContentDescription" />
 
+
+                <ImageButton
+                    android:id="@+id/q_audio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="play"
+                    app:srcCompat="@android:drawable/ic_media_play"
+                    tools:ignore="ContentDescription" />
 
                 <Button
                     android:id="@+id/q_AnswOne"
@@ -166,45 +153,81 @@
                     android:textSize="18sp"
                     tools:text="Nokia" />
 
-                <RadioGroup
-                    android:id="@+id/RB_Group"
+                <CheckBox
+                    android:id="@+id/cb_Ans1"
+                    style="@style/Widget.AppCompat.Button"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="75dp">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="#555555"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="CheckBox"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
 
-                        <RadioButton
-                            android:id="@+id/RB_Ans1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="RadioButton"
-                            android:padding="15dp"
-                            tools:ignore="HardcodedText" />
+                <CheckBox
+                    android:id="@+id/cb_Ans2"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="#555555"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="CheckBox"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
 
-                        <RadioButton
-                            android:id="@+id/RB_Ans2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="RadioButton"
-                            android:padding="15dp"
-                            tools:ignore="HardcodedText" />
+                <CheckBox
+                    android:id="@+id/cb_Ans3"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="#555555"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="CheckBox"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
 
-                        <RadioButton
-                            android:id="@+id/RB_Ans3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="RadioButton"
-                            android:padding="15dp"
-                            tools:ignore="HardcodedText" />
+                <CheckBox
+                    android:id="@+id/cb_Ans4"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="#555555"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="CheckBox"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
 
-                        <RadioButton
-                            android:id="@+id/RB_Ans4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="RadioButton"
-                            android:padding="15dp"
-                            tools:ignore="HardcodedText" />
-
-                </RadioGroup>
+                <Button
+                    android:id="@+id/Check_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="checkAnswer"
+                    android:text="Comprobar"
+                    tools:ignore="HardcodedText" />
 
                 <android.support.design.widget.FloatingActionButton
                     android:id="@+id/floatingActionButton"
@@ -215,7 +238,7 @@
                     android:onClick="optionsSelected"
                     app:srcCompat="@android:drawable/ic_menu_preferences"
                     android:focusable="true"
-                    tools:ignore="RtlHardcoded" />
+                    tools:ignore="ContentDescription,RtlHardcoded" />
 
         </LinearLayout>
 

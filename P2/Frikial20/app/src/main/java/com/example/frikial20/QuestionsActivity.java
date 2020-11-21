@@ -8,10 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -52,11 +51,11 @@ public class QuestionsActivity extends AppCompatActivity {
     private Button TVAns3;
     private Button TVAns4;
 
-    private RadioGroup RGAns;
-    private RadioButton RB_Ans1;
-    private RadioButton RB_Ans2;
-    private RadioButton RB_Ans3;
-    private RadioButton RB_Ans4;
+    private CheckBox CB_Ans1;
+    private CheckBox CB_Ans2;
+    private CheckBox CB_Ans3;
+    private CheckBox CB_Ans4;
+    private Button CB_Button;
 
 
     @Override
@@ -89,11 +88,11 @@ public class QuestionsActivity extends AppCompatActivity {
         TVAns3 = v.findViewById(R.id.q_AnswThree);
         TVAns4 = v.findViewById(R.id.q_AnswFour);
 
-        RGAns = v.findViewById(R.id.RB_Group);
-        RB_Ans1 = v.findViewById(R.id.RB_Ans1);
-        RB_Ans2 = v.findViewById(R.id.RB_Ans2);
-        RB_Ans3 = v.findViewById(R.id.RB_Ans3);
-        RB_Ans4 = v.findViewById(R.id.RB_Ans4);
+        CB_Ans1 = v.findViewById(R.id.cb_Ans1);
+        CB_Ans2 = v.findViewById(R.id.cb_Ans2);
+        CB_Ans3 = v.findViewById(R.id.cb_Ans3);
+        CB_Ans4 = v.findViewById(R.id.cb_Ans4);
+        CB_Button = v.findViewById(R.id.Check_button);
 
         mQuestionsList = Preguntas.getQuestions();
         mTotal_questions = mQuestionsList.size();
@@ -108,10 +107,10 @@ public class QuestionsActivity extends AppCompatActivity {
         ArrayList<Integer> AnswerChecked= new ArrayList<>();
         //Hago 4 if porque no me deja hacerlo con un switch
         if(mCorrect_answer.size()>1){
-            if(RB_Ans1.isChecked()) AnswerChecked.add(1);
-            if(RB_Ans2.isChecked()) AnswerChecked.add(2);
-            if(RB_Ans3.isChecked()) AnswerChecked.add(3);
-            if(RB_Ans4.isChecked()) AnswerChecked.add(4);
+            if(CB_Ans1.isChecked()) AnswerChecked.add(1);
+            if(CB_Ans2.isChecked()) AnswerChecked.add(2);
+            if(CB_Ans3.isChecked()) AnswerChecked.add(3);
+            if(CB_Ans4.isChecked()) AnswerChecked.add(4);
         }
         else {
             if (view.getId()== TVAns1.getId()) AnswerChecked.add(1);
@@ -211,28 +210,34 @@ public class QuestionsActivity extends AppCompatActivity {
             TVVideo.setVisibility(View.GONE);
         }
         if( mCorrect_answer.size() > 1){
-            RB_Ans1.setText(question.AnsOne);
-            RB_Ans2.setText(question.AnsTwo);
-            RB_Ans3.setText(question.AnsThree);
-            RB_Ans4.setText(question.AnsFour);
+            CB_Ans1.setText(question.AnsOne);
+            CB_Ans2.setText(question.AnsTwo);
+            CB_Ans3.setText(question.AnsThree);
+            CB_Ans4.setText(question.AnsFour);
+
             TVAns1.setVisibility(View.GONE);
             TVAns2.setVisibility(View.GONE);
             TVAns3.setVisibility(View.GONE);
             TVAns4.setVisibility(View.GONE);
-            RB_Ans1.setVisibility(View.VISIBLE);
-            RB_Ans2.setVisibility(View.VISIBLE);
-            RB_Ans3.setVisibility(View.VISIBLE);
-            RB_Ans4.setVisibility(View.VISIBLE);
+
+            CB_Ans1.setVisibility(View.VISIBLE);
+            CB_Ans2.setVisibility(View.VISIBLE);
+            CB_Ans3.setVisibility(View.VISIBLE);
+            CB_Ans4.setVisibility(View.VISIBLE);
+            CB_Button.setVisibility(View.VISIBLE);
         }
         else{
             TVAns1.setText(question.AnsOne);
             TVAns2.setText(question.AnsTwo);
             TVAns3.setText(question.AnsThree);
             TVAns4.setText(question.AnsFour);
-            RB_Ans1.setVisibility(View.GONE);
-            RB_Ans2.setVisibility(View.GONE);
-            RB_Ans3.setVisibility(View.GONE);
-            RB_Ans4.setVisibility(View.GONE);
+
+            CB_Ans1.setVisibility(View.GONE);
+            CB_Ans2.setVisibility(View.GONE);
+            CB_Ans3.setVisibility(View.GONE);
+            CB_Ans4.setVisibility(View.GONE);
+            CB_Button.setVisibility(View.GONE);
+
             TVAns1.setVisibility(View.VISIBLE);
             TVAns2.setVisibility(View.VISIBLE);
             TVAns3.setVisibility(View.VISIBLE);
