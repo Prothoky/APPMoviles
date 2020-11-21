@@ -15,23 +15,23 @@ public class Preguntas {
         );
         */
         Pregunta P_1 = new Pregunta(
-                1, App.getResourcesStatic().getString(R.string.Q_1),0,App.getResourcesStatic().getString(R.string.AW1_1), App.getResourcesStatic().getString(R.string.AW2_1),App.getResourcesStatic().getString(R.string.AW3_1), App.getResourcesStatic().getString(R.string.AW4_1), new int[1]
+                1, App.getResourcesStatic().getString(R.string.Q_1),App.getResourcesStatic().getString(R.string.AW1_1), App.getResourcesStatic().getString(R.string.AW2_1),App.getResourcesStatic().getString(R.string.AW3_1), App.getResourcesStatic().getString(R.string.AW4_1), new int[1]
         );
         questionList.add(P_1);
         Pregunta P_2 = new Pregunta(
-                2, App.getResourcesStatic().getString(R.string.Q_2),0,App.getResourcesStatic().getString(R.string.AW1_2), App.getResourcesStatic().getString(R.string.AW2_2),App.getResourcesStatic().getString(R.string.AW3_2), App.getResourcesStatic().getString(R.string.AW4_2), new int[3]
+                2, App.getResourcesStatic().getString(R.string.Q_2),App.getResourcesStatic().getString(R.string.AW1_2), App.getResourcesStatic().getString(R.string.AW2_2),App.getResourcesStatic().getString(R.string.AW3_2), App.getResourcesStatic().getString(R.string.AW4_2), new int[3]
         );
         questionList.add(P_2);
         Pregunta P_3 = new Pregunta(
-                3, App.getResourcesStatic().getString(R.string.Q_3),0, App.getResourcesStatic().getString(R.string.AW2_3),App.getResourcesStatic().getString(R.string.AW3_3), App.getResourcesStatic().getString(R.string.AW4_3), App.getResourcesStatic().getString(R.string.AW1_3),new int[4]
+                3, App.getResourcesStatic().getString(R.string.Q_3), App.getResourcesStatic().getString(R.string.AW2_3),App.getResourcesStatic().getString(R.string.AW3_3), App.getResourcesStatic().getString(R.string.AW4_3), App.getResourcesStatic().getString(R.string.AW1_3),new int[4]
         );
         questionList.add(P_3);
         Pregunta P_4 = new Pregunta(
-                4, App.getResourcesStatic().getString(R.string.Q_4),0, App.getResourcesStatic().getString(R.string.AW1_4), App.getResourcesStatic().getString(R.string.AW3_4),App.getResourcesStatic().getString(R.string.AW2_4), App.getResourcesStatic().getString(R.string.AW4_4), new int[2]
+                4, App.getResourcesStatic().getString(R.string.Q_4), App.getResourcesStatic().getString(R.string.AW1_4), App.getResourcesStatic().getString(R.string.AW3_4),App.getResourcesStatic().getString(R.string.AW2_4), App.getResourcesStatic().getString(R.string.AW4_4), new int[2]
         );
         questionList.add(P_4);
         Pregunta P_5 = new Pregunta(
-                5, App.getResourcesStatic().getString(R.string.Q_5),R.drawable.image_q5 , App.getResourcesStatic().getString(R.string.AW1_5),App.getResourcesStatic().getString(R.string.AW4_5), App.getResourcesStatic().getString(R.string.AW2_5),App.getResourcesStatic().getString(R.string.AW3_5),  new int[2]
+                5, 1,R.drawable.image_q5 , App.getResourcesStatic().getString(R.string.Q_5), App.getResourcesStatic().getString(R.string.AW1_5),App.getResourcesStatic().getString(R.string.AW4_5), App.getResourcesStatic().getString(R.string.AW2_5),App.getResourcesStatic().getString(R.string.AW3_5),  new int[2]
         );
         questionList.add(P_5);
 
@@ -58,64 +58,50 @@ public class Preguntas {
         int AnsImgFour = -1;
         int[] AnsCorrect;
 
-        public Pregunta(int id, String question, int image, String ansOne, String ansTwo, String ansThree, String ansFour, int[] ansCorrect) {
+        public Pregunta(int id, String question, String ansOne, String ansTwo, String ansThree, String ansFour, int[] ansCorrect) {
             this.id = id;
             this.type = 0 ;
             this.question = question;
-            this.image = image;
             this.AnsOne = ansOne;
             this.AnsTwo = ansTwo;
             this.AnsThree = ansThree;
             this.AnsFour = ansFour;
             this.AnsCorrect = ansCorrect;
         }
-        public Pregunta(int id, String question, int image, int ansImgOne, int ansImgTwo,int ansImgThree, int ansImgFour, int[] ansCorrect) {
-            this.id = id;
-            this.type = 1;
-            this.question = question;
-            this.image = image;
-            this.AnsImgOne = ansImgOne;
-            this.AnsImgTwo = ansImgTwo;
-            this.AnsImgThree = ansImgThree;
-            this.AnsImgFour = ansImgFour;
-            this.AnsCorrect = ansCorrect;
-        }
-        public Pregunta(int id, String question, int image, String ansOne, String ansTwo, String ansThree, String ansFour, int ansImgOne, int ansImgTwo,int ansImgThree, int ansImgFour, int[] ansCorrect) {
-            this.type = 2;
-            this.id = id;
-            this.question = question;
-            this.image = image;
-            this.AnsOne = ansOne;
-            this.AnsTwo = ansTwo;
-            this.AnsThree = ansThree;
-            this.AnsFour = ansFour;
-            this.AnsImgOne = ansImgOne;
-            this.AnsImgTwo = ansImgTwo;
-            this.AnsImgThree = ansImgThree;
-            this.AnsImgFour = ansImgFour;
-            this.AnsCorrect = ansCorrect;
-        }
-        public Pregunta(int id,int type, int media, String ansOne, String ansTwo, String ansThree, String ansFour, int[] ansCorrect) {
+
+        public Pregunta(int id, int type, int media, String question, String ansOne, String ansTwo, String ansThree, String ansFour, int[] ansCorrect) {
 
             this.id = id;
             this.type=type;
 
             switch (type){
-                case 3:{
+                case 1:{
+                    this.image = media;
+                }
+                case 2:{
                     this.audio = media;
                 }
-                case 4:{
+                case 3:{
                     this.video = media;
                 }
             }
-            
+            this.question= question;
             this.AnsOne = ansOne;
             this.AnsTwo = ansTwo;
             this.AnsThree = ansThree;
             this.AnsFour = ansFour;
             this.AnsCorrect = ansCorrect;
         }
-
+        public Pregunta(int id, String question, int ansImgOne, int ansImgTwo,int ansImgThree, int ansImgFour, int[] ansCorrect) {
+            this.id = id;
+            this.type = 4;
+            this.question = question;
+            this.AnsImgOne = ansImgOne;
+            this.AnsImgTwo = ansImgTwo;
+            this.AnsImgThree = ansImgThree;
+            this.AnsImgFour = ansImgFour;
+            this.AnsCorrect = ansCorrect;
+        }
     }
 }
 
