@@ -31,35 +31,57 @@
     <string name="AW3_5">Mon Calamari</string>
     <string name="AW4_5">Wookie</string>
 
-    <string name="Q_11">¿A qué personaje representa esta canción?</string>
-    <string name="AW1_11">Darth Vader</string>
-    <string name="AW2_11">El Emperador</string>
-    <string name="AW3_11">Obi-Wan Kenobi</string>
-    <string name="AW4_11">Maestro Yoda</string>
+    <string name="Q_6">¿Quién fué el maestro del Emperador?</string>
+    <string name="AW1_6">Darth Sidious</string>
+    <string name="AW2_6">Darth Plagueis</string>
+    <string name="AW3_6">Darth Revan</string>
+    <string name="AW4_6">Darth Bane</string>
 
-    <string name="Q_12">¿En qué momento suena el siguiente fragmento musical en las películas?</string>
-    <string name="AW1_12">Destrucción de la Estrella de la Muerte</string>
-    <string name="AW2_12">Batallas Jedi</string>
-    <string name="AW3_12">Intro</string>
-    <string name="AW4_12">Créditos</string>
+    <string name="Q_7">¿Quiénes de los siguientes fueron maestros jedi?</string>
+    <string name="AW1_7">Anakin Skywalker</string>
+    <string name="AW2_7">Mace Windu</string>
+    <string name="AW3_7">Obi-Wan Kenobi</string>
+    <string name="AW4_7">Shaak Ti</string>
 
-    <string name="Q_13">¿Qué especie emite los siguientes sonidos?</string>
-    <string name="AW1_13">Tusken</string>
-    <string name="AW2_13">Jawa</string>
-    <string name="AW3_13">Gungan</string>
-    <string name="AW4_13">Gamorreano</string>
+    <string name="Q_8">¿Cuáles de los siguientes planetas son del universo de Star Wars?</string>
+    <string name="AW1_8">Dagobah</string>
+    <string name="AW2_8">Yavin</string>
+    <string name="AW3_8">Gallifrey</string>
+    <string name="AW4_8">Caprica</string>
 
-    <string name="Q_14">¿Qué arma emite estos sonidos?</string>
-    <string name="AW1_14">Sable láser</string>
-    <string name="AW2_14">Bláster</string>
-    <string name="AW3_14">Caza TIE</string>
-    <string name="AW4_14">Cañón láser</string>
+    <string name="Q_9">¿Cuál es el símbolo de los rebeldes?</string>
 
-    <string name="Q_15">¿Qué robot emite estos sonidos?</string>
-    <string name="AW1_15">R2D2</string>
-    <string name="AW2_15">C3PO</string>
-    <string name="AW3_15">Droide Gonk</string>
-    <string name="AW4_15">Droideka</string>
+    <string name="Q_10">¿Cuál es el emblema de Boba Fett?</string>
+
+    <string name="Q_11">¿Quienes son los padres de Leia Organa?</string>
+    <string name="AW1_11">Padme Amidala</string>
+    <string name="AW2_11">Anakin Skywalker</string>
+    <string name="AW3_11">Luke Skywalker</string>
+    <string name="AW4_11">Mon Mothma</string>
+
+    <string name="Q_12">¿Qué vehículos pertenecen al imperio?</string>
+    <string name="AW1_12">Ala X</string>
+    <string name="AW2_12">Ala Y</string>
+    <string name="AW3_12">Caza TIE</string>
+    <string name="AW4_12">Star Destroyer</string>
+
+    <string name="Q_13">¿Cuál es la nave más rápida?</string>
+    <string name="AW1_13">Lanzadera Lambda</string>
+    <string name="AW2_13">Tantive IV</string>
+    <string name="AW3_13">Slave I</string>
+    <string name="AW4_13">Halcón Milenario</string>
+
+    <string name="Q_14">¿Qué especies existen en el universo de Star Wars?</string>
+    <string name="AW1_14">Sharlacc</string>
+    <string name="AW2_14">Rancor</string>
+    <string name="AW3_14">Hutt</string>
+    <string name="AW4_14">Uruk-Hai</string>
+
+    <string name="Q_15">¿Qué personaje es congelado en carbonita?</string>
+    <string name="AW1_15">Leia Organa</string>
+    <string name="AW2_15">Han Solo</string>
+    <string name="AW3_15">Chewbacca</string>
+    <string name="AW4_15">C3PO</string>
 
     <string name="Q_16">¿A qué película pertenece esta icónica escena?</string>
     <string name="AW1_16">El imperio contraataca</string>
@@ -90,6 +112,36 @@
     <string name="AW2_20">Jar Jar Binks</string>
     <string name="AW3_20">Padme Amidala</string>
     <string name="AW4_20">Anakin Skywalker</string>
+
+    <string name="Q_21">¿A qué personaje representa esta canción?</string>
+    <string name="AW1_21">Darth Vader</string>
+    <string name="AW2_21">El Emperador</string>
+    <string name="AW3_21">Obi-Wan Kenobi</string>
+    <string name="AW4_21">Maestro Yoda</string>
+
+    <string name="Q_22">¿En qué momento suena el siguiente fragmento musical en las películas?</string>
+    <string name="AW1_22">Destrucción de la Estrella de la Muerte</string>
+    <string name="AW2_22">Batallas Jedi</string>
+    <string name="AW3_22">Intro</string>
+    <string name="AW4_22">Créditos</string>
+
+    <string name="Q_23">¿Qué especie emite los siguientes sonidos?</string>
+    <string name="AW1_23">Tusken</string>
+    <string name="AW2_23">Jawa</string>
+    <string name="AW3_23">Gungan</string>
+    <string name="AW4_23">Gamorreano</string>
+
+    <string name="Q_24">¿Qué arma emite estos sonidos?</string>
+    <string name="AW1_24">Sable láser</string>
+    <string name="AW2_24">Bláster</string>
+    <string name="AW3_24">Caza TIE</string>
+    <string name="AW4_24">Cañón láser</string>
+
+    <string name="Q_25">¿Qué robot emite estos sonidos?</string>
+    <string name="AW1_25">R2D2</string>
+    <string name="AW2_25">C3PO</string>
+    <string name="AW3_25">Droide Gonk</string>
+    <string name="AW4_25">Droideka</string>
 
     <string-array name="P_1">
 
