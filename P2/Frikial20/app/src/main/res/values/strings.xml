@@ -25,12 +25,71 @@
     <string name="AW3_4">Alderaan</string>
     <string name="AW4_4">Naboo</string>
 
-    <string name="Q_5">¿Cómo se llama la raza que aparece en la imagen?</string>
+    <string name="Q_5">¿Cómo se llama la especie que aparece en la imagen?</string>
     <string name="AW1_5">Tusken</string>
     <string name="AW2_5">Ewok</string>
     <string name="AW3_5">Mon Calamari</string>
     <string name="AW4_5">Wookie</string>
 
+    <string name="Q_11">¿A qué personaje representa esta canción?</string>
+    <string name="AW1_11">Darth Vader</string>
+    <string name="AW2_11">El Emperador</string>
+    <string name="AW3_11">Obi-Wan Kenobi</string>
+    <string name="AW4_11">Maestro Yoda</string>
+
+    <string name="Q_12">¿En qué momento suena el siguiente fragmento musical en las películas?</string>
+    <string name="AW1_12">Destrucción de la Estrella de la Muerte</string>
+    <string name="AW2_12">Batallas Jedi</string>
+    <string name="AW3_12">Intro</string>
+    <string name="AW4_12">Créditos</string>
+
+    <string name="Q_13">¿Qué especie emite los siguientes sonidos?</string>
+    <string name="AW1_13">Tusken</string>
+    <string name="AW2_13">Jawa</string>
+    <string name="AW3_13">Gungan</string>
+    <string name="AW4_13">Gamorreano</string>
+
+    <string name="Q_14">¿Qué arma emite estos sonidos?</string>
+    <string name="AW1_14">Sable láser</string>
+    <string name="AW2_14">Bláster</string>
+    <string name="AW3_14">Caza TIE</string>
+    <string name="AW4_14">Cañón láser</string>
+
+    <string name="Q_15">¿Qué robot emite estos sonidos?</string>
+    <string name="AW1_15">R2D2</string>
+    <string name="AW2_15">C3PO</string>
+    <string name="AW3_15">Droide Gonk</string>
+    <string name="AW4_15">Droideka</string>
+
+    <string name="Q_16">¿A qué película pertenece esta icónica escena?</string>
+    <string name="AW1_16">El imperio contraataca</string>
+    <string name="AW2_16">La venganza de los sith</string>
+    <string name="AW3_16">Una nueva esperanza</string>
+    <string name="AW4_16">El retorno del jedi</string>
+
+    <string name="Q_17">¿Cómo se llama este famoso gángster?</string>
+    <string name="AW1_17">Moff Tarkin</string>
+    <string name="AW2_17">Lando Calrissian</string>
+    <string name="AW3_17">Boba Fett</string>
+    <string name="AW4_17">Jabba el Hutt</string>
+
+    <string name="Q_18">¿Qué jedi están peleando?</string>
+    <string name="AW1_18">Obi-Wan Kenobi</string>
+    <string name="AW2_18">Ki-Adi-Mundi</string>
+    <string name="AW3_18">Anakin Skywalker</string>
+    <string name="AW4_18">Mace Windu</string>
+
+    <string name="Q_19">¿En qué planeta está aterrizando la nave?</string>
+    <string name="AW1_19">Coruscant</string>
+    <string name="AW2_19">Endor</string>
+    <string name="AW3_19">Naboo</string>
+    <string name="AW4_19">Utapau</string>
+
+    <string name="Q_20">¿Quién es el humano que está compitiendo en la carrera?</string>
+    <string name="AW1_20">Qui-Gon Jinn</string>
+    <string name="AW2_20">Jar Jar Binks</string>
+    <string name="AW3_20">Padme Amidala</string>
+    <string name="AW4_20">Anakin Skywalker</string>
 
     <string-array name="P_1">
 
