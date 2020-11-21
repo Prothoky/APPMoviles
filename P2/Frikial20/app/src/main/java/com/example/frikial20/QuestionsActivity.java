@@ -1,5 +1,6 @@
 package com.example.frikial20;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,13 +13,11 @@ import android.widget.VideoView;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.IllegalFormatCodePointException;
 
 public class QuestionsActivity extends AppCompatActivity {
 
     //Estas variables serán utilizadas para mostrar un determinado numero y tipo de pregunta
 
-    private String cName;
     private int cQuestions;
     private boolean cHardcore;
     private boolean cVideo;
@@ -28,7 +27,7 @@ public class QuestionsActivity extends AppCompatActivity {
 
     private ArrayList<Preguntas.Pregunta> mQuestionsList;
     private int mCurrentPosition = 0;
-    private ArrayList mCorrect_answer;
+    private ArrayList<Integer> mCorrect_answer;
     private int mCorrectAnswers = 0;
     private int mWrongAnswers;
     private int mScore = 0;
@@ -58,7 +57,6 @@ public class QuestionsActivity extends AppCompatActivity {
         //Estas variables serán utilizadas para mostrar un determinado numero y tipo de pregunta
         //Estas variables se modifican en el activity config
 
-        cName = SharedPrefs.getString(this, "name" ,"");
         cQuestions = SharedPrefs.getInt(this, "numberQuestions",5);
         cHardcore = SharedPrefs.getBoolean(this, "hardcore",false);
         cVideo = SharedPrefs.getBoolean(this, "video",true);
@@ -85,14 +83,14 @@ public class QuestionsActivity extends AppCompatActivity {
 
     public void checkAnswer(View view){
 
-        ArrayList AnswerChecked= new ArrayList();
+        ArrayList<Integer> AnswerChecked= new ArrayList<>();
         //Hago 4 if porque no me deja hacerlo con un switch
         if (view.getId()== TVAns1.getId()) AnswerChecked.add(1);
         else if (view.getId()== TVAns2.getId()) AnswerChecked.add(2);
         else if (view.getId()== TVAns3.getId()) AnswerChecked.add(3);
         else if (view.getId()== TVAns4.getId()) AnswerChecked.add(4);
 
-        if (mCorrect_answer == AnswerChecked) {
+        if (mCorrect_answer.equals(AnswerChecked)) {
             mScore+=3;
             mCorrectAnswers++;
             Toast.makeText(this, "CORRECTO", Toast.LENGTH_SHORT).show();
@@ -126,6 +124,7 @@ public class QuestionsActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private void setQuestion() {
 
         TVPosition.setText("Pregunta: "+ mCurrent_question + "/" + cQuestions);
@@ -155,15 +154,16 @@ public class QuestionsActivity extends AppCompatActivity {
         TVQuestion.setText(question.question);
         mCorrect_answer = question.AnsCorrect;
 
+
         if(mCorrect_answer.size()>1){
 
         }
         if(question.type == 1){
             TVImage.setImageResource(question.image);
-            TVImage.setActivated(true);
+            TVImage.setVisibility(View.VISIBLE);
         }
         else{
-            TVImage.setActivated(false);
+            TVImage.setVisibility(View.GONE);
         }
         if(question.type == 2){
             //TVAudio.setAudioResource(question.audio);
