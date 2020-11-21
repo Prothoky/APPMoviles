@@ -49,9 +49,17 @@
     <string name="AW3_8">Gallifrey</string>
     <string name="AW4_8">Caprica</string>
 
-    <string name="Q_9">¿Cuál es el símbolo de los rebeldes?</string>
+    <string name="Q_9">¿A qué facción pertenece este símbolo?</string>
+    <string name="AW1_9">Separatistas</string>
+    <string name="AW2_9">Imperio</string>
+    <string name="AW3_9">Rebeldes</string>
+    <string name="AW4_9">República</string>
 
-    <string name="Q_10">¿Cuál es el emblema de Boba Fett?</string>
+    <string name="Q_10">¿A qué personaje pertenece este emblema?</string>
+    <string name="AW1_10">Boba Fett</string>
+    <string name="AW2_10">IG-88</string>
+    <string name="AW3_10">Boosk</string>
+    <string name="AW4_10">Keepa</string>
 
     <string name="Q_11">¿Quienes son los padres de Leia Organa?</string>
     <string name="AW1_11">Padme Amidala</string>
