@@ -22,7 +22,7 @@ public class Config extends AppCompatActivity {
     int numberQuestions=0;
     boolean hardcore=false;
     boolean sound=true;
-    boolean image=true;
+    boolean video=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class Config extends AppCompatActivity {
 
         numberQuestions = SharedPrefs.getInt(this, "numberQuestions");
         hardcore = SharedPrefs.getBoolean(this, "hardcore");
-        image = SharedPrefs.getBoolean(this, "image");
+        video = SharedPrefs.getBoolean(this, "video");
         sound = SharedPrefs.getBoolean(this, "sound");
 
         switch (numberQuestions){
@@ -54,9 +54,6 @@ public class Config extends AppCompatActivity {
             case 15:
                 radioButton = v.findViewById(R.id.radioButtonAns15);
                 break;
-            case 20:
-                radioButton = v.findViewById(R.id.radioButtonAns20);
-                break;
             default:
                 radioButton = v.findViewById(R.id.radioButtonAns15);
                 break;
@@ -65,7 +62,7 @@ public class Config extends AppCompatActivity {
         radioButton.setChecked(true);
 
         hardcoreSwitch.setChecked(hardcore);
-        imageSwitch.setChecked(image);
+        imageSwitch.setChecked(video);
         soundSwitch.setChecked(sound);
     }
 
@@ -73,7 +70,7 @@ public class Config extends AppCompatActivity {
         checkSwitchs();
         SharedPrefs.saveInt(this, "numberQuestions", numberQuestions);
         SharedPrefs.saveBoolean(this, "hardcore", hardcore);
-        SharedPrefs.saveBoolean(this, "image", image);
+        SharedPrefs.saveBoolean(this, "image", video);
         SharedPrefs.saveBoolean(this, "sound", sound);
         if(!textInput.getText().toString().isEmpty()){
             SharedPrefs.saveString(this, "name", textInput.getText().toString());
@@ -104,7 +101,7 @@ public class Config extends AppCompatActivity {
 
     private void checkSwitchs(){
         hardcore = hardcoreSwitch.isChecked();
-        image = imageSwitch.isChecked();
+        video = imageSwitch.isChecked();
         sound = soundSwitch.isChecked();
     }
 
@@ -121,9 +118,6 @@ public class Config extends AppCompatActivity {
                 break;
             case R.id.radioButtonAns15:
                 numberQuestions=15;
-                break;
-            case R.id.radioButtonAns20:
-                numberQuestions=20;
                 break;
         }
     }

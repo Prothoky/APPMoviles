@@ -24,6 +24,7 @@ public class Intro extends AppCompatActivity {
     public void goConfig (View view){
 
         Intent i = new Intent(this, Config.class);
+        i.putExtra("prevActivity", "Intro.class");
         startActivity(i);
         finish();
 
@@ -31,7 +32,6 @@ public class Intro extends AppCompatActivity {
     public void goScoreboard (View view){
 
         Intent i = new Intent(this, Scoreboard.class);
-        i.putExtra("prevActivity", "Intro.class");
         startActivity(i);
         finish();
 
