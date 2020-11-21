@@ -44,18 +44,18 @@ public class Preguntas {
 
         int type;
         int id;
-        String question;
-        int image;
-        int video=-1;
-        int audio=-1;
-        String AnsOne;
-        String AnsTwo;
-        String AnsThree;
-        String AnsFour;
-        int AnsImgOne;
-        int AnsImgTwo;
-        int AnsImgThree;
-        int AnsImgFour;
+        String question = "";
+        int image = -1;
+        int video = -1;
+        int audio = -1;
+        String AnsOne = "";
+        String AnsTwo = "";
+        String AnsThree = "";
+        String AnsFour = "";
+        int AnsImgOne = -1;
+        int AnsImgTwo = -1;
+        int AnsImgThree = -1;
+        int AnsImgFour = -1;
         int[] AnsCorrect;
 
         public Pregunta(int id, String question, int image, String ansOne, String ansTwo, String ansThree, String ansFour, int[] ansCorrect) {
@@ -67,10 +67,6 @@ public class Preguntas {
             this.AnsTwo = ansTwo;
             this.AnsThree = ansThree;
             this.AnsFour = ansFour;
-            this.AnsImgOne = -1;
-            this.AnsImgTwo =  -1;
-            this.AnsImgThree = -1;
-            this.AnsImgFour =  -1;
             this.AnsCorrect = ansCorrect;
         }
         public Pregunta(int id, String question, int image, int ansImgOne, int ansImgTwo,int ansImgThree, int ansImgFour, int[] ansCorrect) {
@@ -78,10 +74,6 @@ public class Preguntas {
             this.type = 1;
             this.question = question;
             this.image = image;
-            this.AnsOne = null;
-            this.AnsTwo = null;
-            this.AnsThree = null;
-            this.AnsFour = null;
             this.AnsImgOne = ansImgOne;
             this.AnsImgTwo = ansImgTwo;
             this.AnsImgThree = ansImgThree;
@@ -103,39 +95,27 @@ public class Preguntas {
             this.AnsImgFour = ansImgFour;
             this.AnsCorrect = ansCorrect;
         }
-        public Pregunta(int id, int audio, int video, String ansOne, String ansTwo, String ansThree, String ansFour, int[] ansCorrect) {
-            this.type = 3;
+        public Pregunta(int id,int type, int media, String ansOne, String ansTwo, String ansThree, String ansFour, int[] ansCorrect) {
+
             this.id = id;
-            this.question = "";
-            this.audio = audio;
-            this.video = video;
-            this.image = -1;
+            this.type=type;
+
+            switch (type){
+                case 3:{
+                    this.audio = media;
+                }
+                case 4:{
+                    this.video = media;
+                }
+            }
+            
             this.AnsOne = ansOne;
             this.AnsTwo = ansTwo;
             this.AnsThree = ansThree;
             this.AnsFour = ansFour;
-            this.AnsImgOne = -1;
-            this.AnsImgTwo = -1;
-            this.AnsImgThree = -1;
-            this.AnsImgFour = -1;
             this.AnsCorrect = ansCorrect;
         }
-        public Pregunta(int id, int video, String ansOne, String ansTwo, String ansThree, String ansFour, int[] ansCorrect) {
-            this.type = 4;
-            this.id = id;
-            this.question = "";
-            this.video = video;
-            this.image = -1;
-            this.AnsOne = ansOne;
-            this.AnsTwo = ansTwo;
-            this.AnsThree = ansThree;
-            this.AnsFour = ansFour;
-            this.AnsImgOne = -1;
-            this.AnsImgTwo = -1;
-            this.AnsImgThree = -1;
-            this.AnsImgFour = -1;
-            this.AnsCorrect = ansCorrect;
-        }
+
     }
 }
 
