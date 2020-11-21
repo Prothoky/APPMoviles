@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         */
     }
 
-    public void preguntas (View view){
+    public void goIntro (View view){
         /* EJEMPLO DE USO SharedPreferences
         TextView textView = (TextView) v.findViewById(R.id.sharedPrefsTestWidget);  // obtiene *supuesto* campo de entrada de texto
         SharedPrefs.saveString(this, "name", textView.getText().toString());    // guarda el contenido en una sharedPref con clave "name"
@@ -42,9 +42,8 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             Toast.makeText(this, "Empezamos", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(this, QuestionsActivity.class);
+            Intent i = new Intent(this, Intro.class);
             SharedPrefs.saveString(this, "name", textInput.getText().toString());
-            i.putExtra("name", textInput.getText().toString());
             startActivity(i);
             finish();
         }

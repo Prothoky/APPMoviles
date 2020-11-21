@@ -28,7 +28,8 @@ public class QuestionsActivity extends AppCompatActivity {
     private int mScore =0;
 
     private TextView mQuestion;
-    private TextView mTVScore;
+    private TextView mPosition;
+    private TextView mCorrect_Incorrect;
     private ImageView mImage;
     private Button mAns1;
     private Button mAns2;
@@ -50,14 +51,15 @@ public class QuestionsActivity extends AppCompatActivity {
         //Estas variables se modifican en el activity config
 
         name = SharedPrefs.getString(this, "name" ,"");
-        numberQuestions = SharedPrefs.getInt(this, "numberQuestions",15);
+        numberQuestions = SharedPrefs.getInt(this, "numberQuestions",5);
         hardcore = SharedPrefs.getBoolean(this, "hardcore",false);
         image = SharedPrefs.getBoolean(this, "image",true);
         sound = SharedPrefs.getBoolean(this, "sound",true);
 
         //Estas variables serán utilizadas para mostrar un determinado numero y tipo de pregunta
 
-        mTVScore = v.findViewById(R.id.score);
+        mPosition = v.findViewById(R.id.questions_pos);
+        mCorrect_Incorrect = v.findViewById(R.id.C_W);
         mQuestion = v.findViewById(R.id.q_question);
         mImage = v.findViewById(R.id.q_image);
         mAns1 = v.findViewById(R.id.q_AnswOne);
@@ -65,9 +67,8 @@ public class QuestionsActivity extends AppCompatActivity {
         mAns3 = v.findViewById(R.id.q_AnswThree);
         mAns4 = v.findViewById(R.id.q_AnswFour);
         mQuestionsList = Preguntas.getQuestions();
-        mTotal_questions = mQuestionsList.size();
+        mTotal_questions = numberQuestions;
         setQuestion();
-        updateScore();
     }
 
     public void checkAnswer(View view){
@@ -92,7 +93,6 @@ public class QuestionsActivity extends AppCompatActivity {
                 mScore-=2;
                 Toast.makeText(this, "INCORRECTO", Toast.LENGTH_SHORT).show();
             }
-            updateScore();
             if (mCurrentPosition < mTotal_questions) {
                 setQuestion();
             } else {
@@ -109,6 +109,9 @@ public class QuestionsActivity extends AppCompatActivity {
 
     private void setQuestion() {
 
+        mPosition.setText("Pregunta: "+ (mCurrentPosition+1) + "/" + mTotal_questions);
+        mCorrect_Incorrect.setText("Correctas: " + mCorrectAnswers + " - Fallidas:" + (mCurrentPosition-mCorrectAnswers));
+
         Preguntas.Pregunta question = mQuestionsList.get(mCurrentPosition);
 
         mQuestion.setText(question.question);
@@ -118,10 +121,6 @@ public class QuestionsActivity extends AppCompatActivity {
         mAns3.setText(question.AnsThree);
         mAns4.setText(question.AnsFour);
         mCorrect_answer = question.AnsCorrect[0];
-    }
-
-    private void updateScore(){
-        mTVScore.setText("Puntuación: " + mScore);
     }
 
     public void optionsSelected(View view){
