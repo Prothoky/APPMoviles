@@ -103,16 +103,6 @@ public class Preguntas {
             this.AnsFour = ansFour;
             this.AnsCorrect = ansCorrect;
         }
-        public Pregunta(int id, String question, int ansImgOne, int ansImgTwo,int ansImgThree, int ansImgFour, ArrayList<Integer> ansCorrect) {
-            this.id = id;
-            this.type = 4;
-            this.question = question;
-            this.AnsImgOne = ansImgOne;
-            this.AnsImgTwo = ansImgTwo;
-            this.AnsImgThree = ansImgThree;
-            this.AnsImgFour = ansImgFour;
-            this.AnsCorrect = ansCorrect;
-        }
     }
 }
 

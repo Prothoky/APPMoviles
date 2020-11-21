@@ -2,11 +2,16 @@ package com.example.frikial20;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -28,6 +33,7 @@ public class QuestionsActivity extends AppCompatActivity {
     private ArrayList<Preguntas.Pregunta> mQuestionsList;
     private int mCurrentPosition = 0;
     private ArrayList<Integer> mCorrect_answer;
+
     private int mCorrectAnswers = 0;
     private int mWrongAnswers;
     private int mScore = 0;
@@ -39,10 +45,18 @@ public class QuestionsActivity extends AppCompatActivity {
     private TextView TVCorrect_Incorrect;
     private ImageView TVImage;
     private VideoView TVVideo;
+    private ImageButton TVAudio;
+    private MediaPlayer mediaPlayer;
     private Button TVAns1;
     private Button TVAns2;
     private Button TVAns3;
     private Button TVAns4;
+
+    private RadioGroup RGAns;
+    private RadioButton RB_Ans1;
+    private RadioButton RB_Ans2;
+    private RadioButton RB_Ans3;
+    private RadioButton RB_Ans4;
 
 
     @Override
@@ -68,10 +82,18 @@ public class QuestionsActivity extends AppCompatActivity {
         TVCorrect_Incorrect = v.findViewById(R.id.C_W);
         TVQuestion = v.findViewById(R.id.q_question);
         TVImage = v.findViewById(R.id.q_image);
+        TVVideo = v.findViewById(R.id.q_video);
+        TVAudio = v.findViewById(R.id.q_audio);
         TVAns1 = v.findViewById(R.id.q_AnswOne);
         TVAns2 = v.findViewById(R.id.q_AnswTwo);
         TVAns3 = v.findViewById(R.id.q_AnswThree);
         TVAns4 = v.findViewById(R.id.q_AnswFour);
+
+        RGAns = v.findViewById(R.id.RB_Group);
+        RB_Ans1 = v.findViewById(R.id.RB_Ans1);
+        RB_Ans2 = v.findViewById(R.id.RB_Ans2);
+        RB_Ans3 = v.findViewById(R.id.RB_Ans3);
+        RB_Ans4 = v.findViewById(R.id.RB_Ans4);
 
         mQuestionsList = Preguntas.getQuestions();
         mTotal_questions = mQuestionsList.size();
@@ -85,10 +107,19 @@ public class QuestionsActivity extends AppCompatActivity {
 
         ArrayList<Integer> AnswerChecked= new ArrayList<>();
         //Hago 4 if porque no me deja hacerlo con un switch
-        if (view.getId()== TVAns1.getId()) AnswerChecked.add(1);
-        else if (view.getId()== TVAns2.getId()) AnswerChecked.add(2);
-        else if (view.getId()== TVAns3.getId()) AnswerChecked.add(3);
-        else if (view.getId()== TVAns4.getId()) AnswerChecked.add(4);
+        if(mCorrect_answer.size()>1){
+            if(RB_Ans1.isChecked()) AnswerChecked.add(1);
+            if(RB_Ans2.isChecked()) AnswerChecked.add(2);
+            if(RB_Ans3.isChecked()) AnswerChecked.add(3);
+            if(RB_Ans4.isChecked()) AnswerChecked.add(4);
+        }
+        else {
+            if (view.getId()== TVAns1.getId()) AnswerChecked.add(1);
+            else if (view.getId()== TVAns2.getId()) AnswerChecked.add(2);
+            else if (view.getId()== TVAns3.getId()) AnswerChecked.add(3);
+            else if (view.getId()== TVAns4.getId()) AnswerChecked.add(4);
+        }
+
 
         if (mCorrect_answer.equals(AnswerChecked)) {
             mScore+=3;
@@ -108,7 +139,7 @@ public class QuestionsActivity extends AppCompatActivity {
                 finish();
             }
         }
-        if (mCurrent_question-1 < cQuestions) {
+        if (mCurrent_question < cQuestions) {
             mCurrentPosition++;
             mCurrent_question++;
             setQuestion();
@@ -166,34 +197,46 @@ public class QuestionsActivity extends AppCompatActivity {
             TVImage.setVisibility(View.GONE);
         }
         if(question.type == 2){
-            //TVAudio.setAudioResource(question.audio);
-            //TVAudio.setActivated(true);
+            mediaPlayer = MediaPlayer.create(this, question.audio);
+            TVAudio.setVisibility(View.VISIBLE);
         }
         else{
-            //TVAudio.setActivated(false);
+            TVAudio.setVisibility(View.GONE);
         }
         if(question.type == 3){
-            //TVVideo.setMediaController();
-            //TVVideo.setActivated(true);
+            TVVideo.setVideoURI(Uri.parse(String.valueOf(question.video)));
+            TVVideo.setVisibility(View.VISIBLE);
         }
         else{
-            //TVVideo.setActivated(false);
+            TVVideo.setVisibility(View.GONE);
         }
-        if(question.type == 4){
-            TVAns1.setActivated(false);
-            TVAns2.setActivated(false);
-            TVAns3.setActivated(false);
-            TVAns4.setActivated(false);
+        if( mCorrect_answer.size() > 1){
+            RB_Ans1.setText(question.AnsOne);
+            RB_Ans2.setText(question.AnsTwo);
+            RB_Ans3.setText(question.AnsThree);
+            RB_Ans4.setText(question.AnsFour);
+            TVAns1.setVisibility(View.GONE);
+            TVAns2.setVisibility(View.GONE);
+            TVAns3.setVisibility(View.GONE);
+            TVAns4.setVisibility(View.GONE);
+            RB_Ans1.setVisibility(View.VISIBLE);
+            RB_Ans2.setVisibility(View.VISIBLE);
+            RB_Ans3.setVisibility(View.VISIBLE);
+            RB_Ans4.setVisibility(View.VISIBLE);
         }
         else{
             TVAns1.setText(question.AnsOne);
             TVAns2.setText(question.AnsTwo);
             TVAns3.setText(question.AnsThree);
             TVAns4.setText(question.AnsFour);
-            TVAns1.setActivated(true);
-            TVAns2.setActivated(true);
-            TVAns3.setActivated(true);
-            TVAns4.setActivated(true);
+            RB_Ans1.setVisibility(View.GONE);
+            RB_Ans2.setVisibility(View.GONE);
+            RB_Ans3.setVisibility(View.GONE);
+            RB_Ans4.setVisibility(View.GONE);
+            TVAns1.setVisibility(View.VISIBLE);
+            TVAns2.setVisibility(View.VISIBLE);
+            TVAns3.setVisibility(View.VISIBLE);
+            TVAns4.setVisibility(View.VISIBLE);
         }
 
     }
@@ -203,5 +246,9 @@ public class QuestionsActivity extends AppCompatActivity {
         i.putExtra("prevActivity", "QuestionsActivity.class");
         startActivity(i);
         finish();
+    }
+
+    public void play(View view){
+        mediaPlayer.start();
     }
 }

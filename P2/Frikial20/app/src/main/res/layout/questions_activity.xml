@@ -50,7 +50,8 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/black"
                             android:textSize="22sp"
-                            tools:text=" Pregunta: 1/10" />
+                            tools:text=" Pregunta: 1/10"
+                            tools:ignore="RtlHardcoded" />
 
                         <TextView
                             android:id="@+id/C_W"
@@ -63,7 +64,8 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/black"
                             android:textSize="22sp"
-                            tools:text="Correctas: 0 - Fallidas: 0" />
+                            tools:text="Correctas: 0 - Fallidas: 0"
+                            tools:ignore="RtlHardcoded" />
 
                 </LinearLayout>
 
@@ -78,6 +80,19 @@
                     android:textColor="@android:color/white"
                     android:textSize="22sp"
                     tools:text="What country does this flag belong to?" />
+
+                <ImageButton
+                    android:id="@+id/q_audio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="play"
+                    app:srcCompat="@android:drawable/ic_media_play"
+                    tools:ignore="ContentDescription" />
+
+                <VideoView
+                    android:id="@+id/q_video"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
                 <ImageView
                     android:id="@+id/q_image"
@@ -142,7 +157,6 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="75dp"
                     android:backgroundTint="#555555"
                     android:gravity="center"
                     android:onClick="checkAnswer"
@@ -152,6 +166,46 @@
                     android:textSize="18sp"
                     tools:text="Nokia" />
 
+                <RadioGroup
+                    android:id="@+id/RB_Group"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="75dp">
+
+                        <RadioButton
+                            android:id="@+id/RB_Ans1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="RadioButton"
+                            android:padding="15dp"
+                            tools:ignore="HardcodedText" />
+
+                        <RadioButton
+                            android:id="@+id/RB_Ans2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="RadioButton"
+                            android:padding="15dp"
+                            tools:ignore="HardcodedText" />
+
+                        <RadioButton
+                            android:id="@+id/RB_Ans3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="RadioButton"
+                            android:padding="15dp"
+                            tools:ignore="HardcodedText" />
+
+                        <RadioButton
+                            android:id="@+id/RB_Ans4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="RadioButton"
+                            android:padding="15dp"
+                            tools:ignore="HardcodedText" />
+
+                </RadioGroup>
+
                 <android.support.design.widget.FloatingActionButton
                     android:id="@+id/floatingActionButton"
                     android:layout_width="match_parent"
@@ -159,7 +213,9 @@
                     android:layout_gravity="bottom|right"
                     android:clickable="true"
                     android:onClick="optionsSelected"
-                    app:srcCompat="@android:drawable/ic_menu_preferences" />
+                    app:srcCompat="@android:drawable/ic_menu_preferences"
+                    android:focusable="true"
+                    tools:ignore="RtlHardcoded" />
 
         </LinearLayout>
 
