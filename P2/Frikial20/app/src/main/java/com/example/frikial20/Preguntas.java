@@ -124,7 +124,6 @@ public class Preguntas {
         questionList.add(P_15);
 
         // MULTIMEDIA
-        /*
         answerCorrect = new ArrayList<>();
         answerCorrect.add(1);
         Pregunta P_16 = new Pregunta(
@@ -195,7 +194,6 @@ public class Preguntas {
                 25, 2, R.raw.audio_r2d2, App.getResourcesStatic().getString(R.string.Q_25), App.getResourcesStatic().getString(R.string.AW1_25),App.getResourcesStatic().getString(R.string.AW2_25), App.getResourcesStatic().getString(R.string.AW3_25),App.getResourcesStatic().getString(R.string.AW4_25),  answerCorrect
         );
         questionList.add(P_25);
-        */
         // FIN PREGUNTAS MULTIMEDIA
 
         return  questionList;
