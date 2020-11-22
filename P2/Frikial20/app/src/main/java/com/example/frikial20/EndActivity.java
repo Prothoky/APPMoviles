@@ -49,19 +49,20 @@ public class EndActivity extends AppCompatActivity {
     }
 
     private void saveInfoPlayer(int intScore , int intCorrectAnswers, int intTotalAnswers){
-
-        String name  =  SharedPrefs.getString(this,"name");
-        Score player = new Score(name, intScore, intCorrectAnswers, intTotalAnswers-intCorrectAnswers, intTotalAnswers);
-        //SharedPrefs.saveScore(this, "player", player);
-        HashSet<String> usersSet = (HashSet<String>) SharedPrefs.getStringSet(this, "users");    // Obtenemos la lista de nombres de usuario
-        usersSet.add(name); // Añadimos el nombre (si no está ya)
-        SharedPrefs.saveStringSet(this, "users", usersSet); // Actualizamos la lista
-        if (SharedPrefs.getInt(this, name, -100) != -100) { // Comprobamos que hay datos guardados del usuario
-            if (SharedPrefs.getInt(this, name) < intScore) {    // Comprobamos que es la mejor puntuación
+        if(!SharedPrefs.getBoolean(this, "anonimus")){
+            String name  =  SharedPrefs.getString(this,"name");
+            Score player = new Score(name, intScore, intCorrectAnswers, intTotalAnswers-intCorrectAnswers, intTotalAnswers);
+            //SharedPrefs.saveScore(this, "player", player);
+            HashSet<String> usersSet = (HashSet<String>) SharedPrefs.getStringSet(this, "users");    // Obtenemos la lista de nombres de usuario
+            usersSet.add(name); // Añadimos el nombre (si no está ya)
+            SharedPrefs.saveStringSet(this, "users", usersSet); // Actualizamos la lista
+            if (SharedPrefs.getInt(this, name, -100) != -100) { // Comprobamos que hay datos guardados del usuario
+                if (SharedPrefs.getInt(this, name) < intScore) {    // Comprobamos que es la mejor puntuación
+                    SharedPrefs.saveInt(this, name, intScore);  // Sobreescribimos puntuación con el nombre de usuario de key
+                }
+            } else {
                 SharedPrefs.saveInt(this, name, intScore);  // Sobreescribimos puntuación con el nombre de usuario de key
             }
-        } else {
-            SharedPrefs.saveInt(this, name, intScore);  // Sobreescribimos puntuación con el nombre de usuario de key
         }
     }
 }

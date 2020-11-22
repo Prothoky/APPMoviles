@@ -39,15 +39,21 @@ public class MainActivity extends AppCompatActivity {
         SharedPrefs.saveString(this, "name", textView.getText().toString());    // guarda el contenido en una sharedPref con clave "name"
         */
         if(textInput.getText().toString().isEmpty()){
-            Toast.makeText(this, "Por favor introduce un nombre", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Iniciado en modo anonimo", Toast.LENGTH_SHORT).show();
+            SharedPrefs.saveBoolean(this, "anonimus", true);
         }
         else{
             Toast.makeText(this, "Empezamos", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(this, Intro.class);
-            SharedPrefs.saveString(this, "name", textInput.getText().toString());
-            startActivity(i);
-            finish();
+            SharedPrefs.saveBoolean(this, "anonimus", false);
         }
+        Intent i = new Intent(this, Intro.class);
+        if(SharedPrefs.getBoolean(this, "anonimus")){
+            SharedPrefs.saveString(this, "name", "Anonimus");
+        }else{
+            SharedPrefs.saveString(this, "name", textInput.getText().toString());
+        }
+        startActivity(i);
+        finish();
 
     }
 }
