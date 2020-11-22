@@ -59,9 +59,11 @@
 
                 <TextView
                     android:id="@+id/q_question"
-                    android:layout_width="375dp"
-                    android:layout_height="84dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:background="#151515"
+                    android:paddingVertical="10dp"
+                    android:paddingHorizontal="10dp"
                     android:gravity="center"
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
@@ -227,6 +229,7 @@
                     android:layout_height="wrap_content"
                     android:onClick="checkAnswer"
                     android:text="Comprobar"
+                    android:textSize="18dp"
                     tools:ignore="HardcodedText" />
 
                 <android.support.design.widget.FloatingActionButton
