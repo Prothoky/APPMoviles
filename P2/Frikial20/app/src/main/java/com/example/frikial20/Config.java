@@ -43,6 +43,7 @@ public class Config extends AppCompatActivity {
         hardcore = SharedPrefs.getBoolean(this, "hardcore");
         video = SharedPrefs.getBoolean(this, "video");
         sound = SharedPrefs.getBoolean(this, "sound");
+        textInput.setText(SharedPrefs.getString(this, "name"));
 
         switch (numberQuestions){
             case 5:
