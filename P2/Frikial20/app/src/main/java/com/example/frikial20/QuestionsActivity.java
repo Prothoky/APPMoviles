@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -212,8 +213,14 @@ public class QuestionsActivity extends AppCompatActivity {
             TVAudio.setVisibility(View.GONE);
         }
         if(question.type == 3){
-            TVVideo.setVideoURI(Uri.parse(String.valueOf(question.video)));
+            TVVideo.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + String.valueOf(question.video)));
             TVVideo.setVisibility(View.VISIBLE);
+            MediaController controller = new MediaController(this);
+            controller.setAnchorView(this.TVVideo);
+            controller.setMediaPlayer(this.TVVideo);
+            TVVideo.setMediaController(controller);
+            TVVideo.requestFocus();
+            TVVideo.start();
         }
         else{
             TVVideo.setVisibility(View.GONE);
