@@ -207,7 +207,7 @@ public class QuestionsActivity extends AppCompatActivity {
             TVAudio.setVisibility(View.GONE);
         }
         if(question.type == 3){
-            TVVideo.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + String.valueOf(question.video)));
+            TVVideo.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + question.video));
             TVVideo.setVisibility(View.VISIBLE);
             MediaController controller = new MediaController(this);
             controller.setAnchorView(this.TVVideo);
