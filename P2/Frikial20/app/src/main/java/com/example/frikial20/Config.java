@@ -52,9 +52,6 @@ public class Config extends AppCompatActivity {
             case 10:
                 radioButton = v.findViewById(R.id.radioButtonAns10);
                 break;
-            case 15:
-                radioButton = v.findViewById(R.id.radioButtonAns15);
-                break;
             default:
                 radioButton = v.findViewById(R.id.radioButtonAns15);
                 break;

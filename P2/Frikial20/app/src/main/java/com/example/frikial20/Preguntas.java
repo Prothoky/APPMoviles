@@ -214,10 +214,6 @@ public class Preguntas {
         String AnsTwo = "";
         String AnsThree = "";
         String AnsFour = "";
-        int AnsImgOne = -1;
-        int AnsImgTwo = -1;
-        int AnsImgThree = -1;
-        int AnsImgFour = -1;
         ArrayList<Integer> AnsCorrect;
 
         public Pregunta(int id, String question, String ansOne, String ansTwo, String ansThree, String ansFour, ArrayList<Integer> ansCorrect) {

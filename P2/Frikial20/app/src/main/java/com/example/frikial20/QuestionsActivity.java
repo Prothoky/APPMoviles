@@ -130,7 +130,7 @@ public class QuestionsActivity extends AppCompatActivity {
             Toast.makeText(this, "INCORRECTO", Toast.LENGTH_SHORT).show();
             if(cHardcore){
                 Intent intent = new Intent(this, EndActivity.class);
-                intent.putExtra("totalQuestions", mCurrentPosition);
+                intent.putExtra("totalQuestions", cQuestions);
                 intent.putExtra("correctAnswers", mCorrectAnswers);
                 intent.putExtra("wrongAnsewers", mWrongAnswers);
                 intent.putExtra("score", mScore);
@@ -144,7 +144,7 @@ public class QuestionsActivity extends AppCompatActivity {
             setQuestion();
         } else {
             Intent intent = new Intent(this, EndActivity.class);
-            intent.putExtra("totalQuestions", mTotal_questions);
+            intent.putExtra("totalQuestions", cQuestions);
             intent.putExtra("correctAnswers", mCorrectAnswers);
             intent.putExtra("wrongAnsewers", mWrongAnswers);
             intent.putExtra("score", mScore);
