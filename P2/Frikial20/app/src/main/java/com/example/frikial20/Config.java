@@ -68,7 +68,7 @@ public class Config extends AppCompatActivity {
         checkSwitchs();
         SharedPrefs.saveInt(this, "numberQuestions", numberQuestions);
         SharedPrefs.saveBoolean(this, "hardcore", hardcore);
-        SharedPrefs.saveBoolean(this, "image", video);
+        SharedPrefs.saveBoolean(this, "video", video);
         SharedPrefs.saveBoolean(this, "sound", sound);
         if(!textInput.getText().toString().isEmpty()){
             SharedPrefs.saveString(this, "name", textInput.getText().toString());

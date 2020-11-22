@@ -38,7 +38,6 @@ public class QuestionsActivity extends AppCompatActivity {
     private int mWrongAnswers;
     private int mScore = 0;
     private int mCurrent_question=1;
-    private int mTotal_questions;
 
     private TextView TVQuestion;
     private TextView TVPosition;
@@ -96,7 +95,6 @@ public class QuestionsActivity extends AppCompatActivity {
         CB_Button = v.findViewById(R.id.Check_button);
 
         mQuestionsList = Preguntas.getQuestions();
-        mTotal_questions = mQuestionsList.size();
 
         Collections.shuffle(mQuestionsList);
 
@@ -194,10 +192,6 @@ public class QuestionsActivity extends AppCompatActivity {
         TVQuestion.setText(question.question);
         mCorrect_answer = question.AnsCorrect;
 
-
-        if(mCorrect_answer.size()>1){
-
-        }
         if(question.type == 1){
             TVImage.setImageResource(question.image);
             TVImage.setVisibility(View.VISIBLE);
