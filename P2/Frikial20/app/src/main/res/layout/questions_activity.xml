@@ -229,7 +229,8 @@
                     android:layout_height="wrap_content"
                     android:onClick="checkAnswer"
                     android:text="Comprobar"
-                    android:textSize="18dp"
+                    android:padding="15dp"
+                    android:textSize="18sp"
                     tools:ignore="HardcodedText" />
 
                 <android.support.design.widget.FloatingActionButton
