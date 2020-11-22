@@ -4,10 +4,8 @@ import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         TextView textView1 = (TextView) v.findViewById(R.id.sharedPrefsTestWidget2);    // obtiene campo texto
         textView1.setText(SharedPrefs.getString(this, "name", "default"));  // setea el valor del campo de texto a lo almacenado (default si no hay nada)
         */
+
     }
 
     public void goIntro (View view){

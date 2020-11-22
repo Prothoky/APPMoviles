@@ -17,7 +17,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
         android:gravity="center"
-        android:onClick="preguntas"
         android:text="Empecemos!"
         android:textColor="@android:color/white"
         android:textSize="50sp"

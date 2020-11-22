@@ -10,18 +10,62 @@
     android:orientation="vertical"
     tools:context=".Scoreboard">
 
-    <TextView
-        android:id="@+id/textViewScoreboard"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:background="#2B2B2B"
+        android:layout_gravity="center"
         android:gravity="center"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="25sp"
-        tools:ignore="HardcodedText" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/Scoreboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="20dp"
+            android:layout_gravity="center"
+            android:background="#2B2B2B"
+            android:gravity="center"
+            android:text="PUNTUACIONES:"
+            android:textAlignment="center"
+            android:textColor="@color/White"
+            android:textSize="25sp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/textViewScoreboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="20dp"
+            android:background="#2B2B2B"
+            android:gravity="center"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="@color/White"
+            android:textSize="25sp"
+            tools:ignore="HardcodedText" />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/darker_gray"
+            android:gravity="center"
+            android:onClick="goIntro"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="20dp"
+            android:text="Volver"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="25sp"
+            tools:ignore="HardcodedText" />
+
+    </LinearLayout>
+
+
 
 
 </ScrollView>

@@ -1,8 +1,10 @@
 package com.example.frikial20;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -55,5 +57,14 @@ public class Scoreboard extends AppCompatActivity {
             textView.append(userNamesArray[i] + ": " + scoresArray[i]);
             textView.append("\n");
         }
+    }
+
+
+    public void goIntro (View view){
+
+        Intent i = new Intent(this, Intro.class);
+        startActivity(i);
+        finish();
+
     }
 }
