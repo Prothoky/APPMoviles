@@ -18,6 +18,7 @@ public class Scoreboard extends AppCompatActivity {
         setContentView(R.layout.activity_scoreboard);
         v = findViewById(android.R.id.content);
         v.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+
         TextView textView = v.findViewById(R.id.textViewScoreboard);
 
         // Obtenemos las puntuaciones
