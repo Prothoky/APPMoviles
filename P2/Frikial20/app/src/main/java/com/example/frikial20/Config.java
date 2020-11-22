@@ -117,7 +117,7 @@ public class Config extends AppCompatActivity {
             default:
                 numberQuestions=15;
                 break;
-            }
+            
         }
     }
 }
