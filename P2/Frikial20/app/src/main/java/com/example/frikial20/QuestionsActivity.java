@@ -155,7 +155,7 @@ public class QuestionsActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-        
+
         if(CB_Ans1.isChecked()) CB_Ans1.setChecked(false);
         if(CB_Ans2.isChecked()) CB_Ans2.setChecked(false);
         if(CB_Ans3.isChecked()) CB_Ans3.setChecked(false);
