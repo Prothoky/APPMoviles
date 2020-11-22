@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         textInput = v.findViewById(R.id.InputText_name);
 
+        //SharedPrefs.resetSharedPrefs(this); // Resetear sharedPrefs
         /* EJEMPLO DE USO SharedPreferences (descomentar View v atributo de clase y crear 2 widgets de texto)
         // Recibe input de usuario en un *supuesto* campo de texto y lo guarda en SharedPreferences
         // Después lee de esa SharedPreferences para mostrarlo por pantalla la próxima vez que se inicie

@@ -78,6 +78,8 @@
                     android:textColorHighlight="#FF0000"
                     android:textColorHint="@android:color/holo_red_dark"
                     android:textColorLink="#FF0000"
+                    android:inputType="text"
+                    android:maxLines="1"
                     tools:ignore="HardcodedText" />
 
             </android.support.design.widget.TextInputLayout>

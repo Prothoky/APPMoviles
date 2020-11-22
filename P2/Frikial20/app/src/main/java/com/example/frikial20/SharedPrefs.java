@@ -19,6 +19,10 @@ public class SharedPrefs {
         return context.getSharedPreferences(SHARED_PREFS_FILE_NAME, Context.MODE_PRIVATE);
     }
 
+    public static void resetSharedPrefs(Context context) {
+        getPrefs(context).edit().clear().commit();
+    }
+
     // BOOLEANOS
     // Guarda booleano
     public static void saveBoolean(Context context, String key, boolean value) {
