@@ -104,6 +104,10 @@ public class QuestionsActivity extends AppCompatActivity {
 
     public void checkAnswer(View view){
 
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            mediaPlayer.stop();
+        }
+
         ArrayList<Integer> AnswerChecked= new ArrayList<>();
         //Hago 4 if porque no me deja hacerlo con un switch
         if(mCorrect_answer.size()>1){
