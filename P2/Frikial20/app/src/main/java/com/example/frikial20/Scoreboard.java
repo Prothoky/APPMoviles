@@ -32,22 +32,26 @@ public class Scoreboard extends AppCompatActivity {
         }
 
         // Ordenamos de mayor a menor por bubble sort en ambos array
-        for (int i = 0; i < userNamesArray.length - 1; i++) {
+        for (int i = 0; i < userNamesArray.length; i++) {
             for (int j = 0; j < userNamesArray.length - i - 1; j++) {
-                if (scoresArray[i] < scoresArray [i + 1]) {
-                    int auxInt = scoresArray[i + 1];
-                    scoresArray[i + 1] = scoresArray[i];
-                    scoresArray[i] = auxInt;
-                    String auxString = userNamesArray[i + 1];
-                    userNamesArray[i + 1] = userNamesArray[i];
-                    userNamesArray[i] = auxString;
+                if (scoresArray[j] < scoresArray [j + 1]) {
+                    int auxInt = scoresArray[j + 1];
+                    scoresArray[j + 1] = scoresArray[i];
+                    scoresArray[j] = auxInt;
+                    String auxString = userNamesArray[j + 1];
+                    userNamesArray[j + 1] = userNamesArray[j];
+                    userNamesArray[j] = auxString;
                 }
             }
         }
 
-        // Pintamos el array en el layout
+        // Pintamos el array en el layout (con máximo 5)
         textView.setText("");
-        for (int i = 0; i < userNamesArray.length; i++) {
+        int numberOfEntries = 5;
+        if (userNamesArray.length < 5) {
+            numberOfEntries = userNamesArray.length;
+        }
+        for (int i = 0; i < numberOfEntries; i++) {
             textView.append(userNamesArray[i] + ": " + scoresArray[i]);
             textView.append("\n");
         }
