@@ -114,10 +114,7 @@ public class Config extends AppCompatActivity {
             case R.id.radioButtonAns10:
                 numberQuestions=10;
                 break;
-            case R.id.radioButtonAns15:
-                numberQuestions=15;
-                break;
-            default: 
+            default:
                 numberQuestions=15;
                 break;
             }
