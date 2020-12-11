@@ -60,11 +60,18 @@ public class JoystickInputController extends InputController {
             if (action == MotionEvent.ACTION_DOWN) {
                 isFiring = true;
             }
-            else if (action == MotionEvent.ACTION_UP) {
+            else {
                 isFiring = false;
             }
             return true;
         }
+    }
+
+    /*
+    Comunica al controlador del input que se ha recibido el evento de pulsado de botón
+     */
+    public void fireApplied() {
+        isFiring = false;
     }
 }
 
