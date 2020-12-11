@@ -5,6 +5,7 @@ import java.util.List;
 
 import dadm.scaffold.R;
 import dadm.scaffold.engine.GameEngine;
+import dadm.scaffold.engine.GameObject;
 import dadm.scaffold.engine.Sprite;
 import dadm.scaffold.input.InputController;
 
@@ -61,8 +62,11 @@ public class SpaceShipPlayer extends Sprite {
     }
 
     @Override
-    public void processCollision(int collisionGroup) {
-        return;
+    public void processCollision(GameEngine gameEngine, int collisionGroup) {
+        // Si colisiona con un enemigo o un disparo enemigo se para el juego
+        if (collisionGroup == 3 || collisionGroup == 4) {
+            gameEngine.stopGame();
+        }
     }
 
     private void updatePosition(long elapsedMillis, InputController inputController) {

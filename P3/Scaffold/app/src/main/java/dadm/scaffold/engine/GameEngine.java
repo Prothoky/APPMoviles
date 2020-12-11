@@ -29,9 +29,11 @@ public class GameEngine {
     public double pixelFactor;
     // Número de grupos de colisiones. No colisionan objetos de un mismo grupo
     // 0 - no colisionables
-    // 1 - colisiones A
-    // 2 - colisiones B
-    private int numCollisionGrups = 3;
+    // 1 - nave del jugador
+    // 2 - ataques del jugador
+    // 3 - naves enemigas
+    // 4 - ataques enemigos
+    private int numCollisionGrups = 5;
 
     private Activity mainActivity;
 
@@ -173,8 +175,8 @@ public class GameEngine {
                     for (int l = 0; l < collisionGroups.get(k).size(); l++) {
                         if (Rect.intersects(rect1, collisionGroups.get(k).get(l).getRect())) {
                             System.out.println(rect1.toString() + " colisiona con " + collisionGroups.get(k).get(l).getRect().toString());
-                            collisionGroups.get(i).get(j).getSprite().processCollision(collisionGroups.get(k).get(l).getSprite().getCollisionGroup());
-                            collisionGroups.get(k).get(l).getSprite().processCollision(collisionGroups.get(i).get(j).getSprite().getCollisionGroup());
+                            collisionGroups.get(i).get(j).getSprite().processCollision(this, collisionGroups.get(k).get(l).getSprite().getCollisionGroup());
+                            collisionGroups.get(k).get(l).getSprite().processCollision(this, collisionGroups.get(i).get(j).getSprite().getCollisionGroup());
                         }
                     }
                 }

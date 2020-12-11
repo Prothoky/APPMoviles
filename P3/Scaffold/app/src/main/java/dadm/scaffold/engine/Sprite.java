@@ -65,8 +65,8 @@ public abstract class Sprite extends GameObject {
 
         this.pixelFactor = gameEngine.pixelFactor;
 
-        this.imageHeight = (int) (spriteDrawable.getIntrinsicHeight() * this.pixelFactor);
-        this.imageWidth = (int) (spriteDrawable.getIntrinsicWidth() * this.pixelFactor);
+        this.imageHeight = (int) (spriteDrawable.getIntrinsicHeight() * this.pixelFactor * scaleFactor / 3);
+        this.imageWidth = (int) (spriteDrawable.getIntrinsicWidth() * this.pixelFactor * scaleFactor / 3);
 
         this.bitmap = ((BitmapDrawable) spriteDrawable).getBitmap();
     }
@@ -100,6 +100,6 @@ public abstract class Sprite extends GameObject {
     }
 
     // Método que se debe llamar al detectar colisión
-    public abstract void processCollision(int collisionGroup);
+    public abstract void processCollision(GameEngine gameEngine, int collisionGroup);
 
 }

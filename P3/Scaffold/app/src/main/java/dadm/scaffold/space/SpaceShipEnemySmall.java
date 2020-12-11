@@ -12,13 +12,13 @@ public class SpaceShipEnemySmall extends Sprite {
     private double speedFactor;
 
     public SpaceShipEnemySmall(GameEngine gameEngine){
-        super(gameEngine, R.drawable.enemy_small_simple, 2, 4);
+        super(gameEngine, R.drawable.enemy_small_simple, 3, 4);
         speedFactor = gameEngine.pixelFactor * 50d / 1000d;
     }
 
     @Override
     public void startGame() {
-        positionX = 50;
+        positionX = 400;
     }
 
     @Override
@@ -30,8 +30,10 @@ public class SpaceShipEnemySmall extends Sprite {
     }
 
     @Override
-    public void processCollision(int collisionGroup) {
-        //System.out.println(getRect().toString());
+    public void processCollision(GameEngine gameEngine, int collisionGroup) {
+        if (collisionGroup == 2) {  // Si colisiona con un disparo del jugador desaparece
+            gameEngine.removeGameObject(this);
+        }
         return;
     }
 
