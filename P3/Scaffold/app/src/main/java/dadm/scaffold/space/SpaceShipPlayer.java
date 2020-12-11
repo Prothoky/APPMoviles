@@ -24,15 +24,26 @@ public class SpaceShipPlayer extends Sprite {
     private boolean basicWeapon; // Arma en uso
 
 
-    public SpaceShipPlayer(GameEngine gameEngine){
-        super(gameEngine, R.drawable.ship_simple, 1, 3);
-        speedFactor = pixelFactor * 100d / 1000d; // We want to move at 100px per second on a 400px tall screen
-        maxX = gameEngine.width - imageWidth;
-        maxY = gameEngine.height - imageHeight;
-
+    /*
+    Instancia la nave, dependiendo del tipo.
+    La primera es lenta y tiene 3 vidas
+    La segunda es rápida y tiene 1 vida
+     */
+    public SpaceShipPlayer(GameEngine gameEngine, int type, int drawableRes){
+        super(gameEngine, drawableRes, 1, 3);
+        if (type == 0 ){
+            speedFactor = pixelFactor * 80d / 1000d; // We want to move at 100px per second on a 400px tall screen
+            maxX = gameEngine.width - imageWidth;
+            maxY = gameEngine.height - imageHeight;
+            healthPoints = 3;
+        } else {
+            speedFactor = pixelFactor * 150d / 1000d; // We want to move at 100px per second on a 400px tall screen
+            maxX = gameEngine.width - imageWidth;
+            maxY = gameEngine.height - imageHeight;
+            healthPoints = 1;
+        }
         initBulletPool(gameEngine);
 
-        healthPoints = 1;
         basicWeapon = true;
     }
 
@@ -115,7 +126,7 @@ public class SpaceShipPlayer extends Sprite {
         }
     }
 
-    
+
     private void checkFiring(long elapsedMillis, GameEngine gameEngine) {
         if (timeSinceLastFire > TIME_BETWEEN_BULLETS) {
             timeSinceLastFire = 0;

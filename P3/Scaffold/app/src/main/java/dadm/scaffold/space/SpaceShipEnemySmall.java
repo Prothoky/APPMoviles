@@ -34,7 +34,7 @@ public class SpaceShipEnemySmall extends Sprite {
 
     @Override
     public void processCollision(GameEngine gameEngine, int collisionGroup) {
-        if (collisionGroup == 2) {  // Si colisiona con un disparo del jugador desaparece y suma puntos
+        if (collisionGroup == 1 || collisionGroup == 2) {  // Si colisiona con un disparo del jugador desaparece y suma puntos
             gameEngine.addScore(scoreGiven);
             gameEngine.removeGameObject(this);
         }
