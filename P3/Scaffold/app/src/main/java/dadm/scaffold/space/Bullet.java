@@ -11,7 +11,7 @@ public class Bullet extends Sprite {
     private SpaceShipPlayer parent;
 
     public Bullet(GameEngine gameEngine){
-        super(gameEngine, R.drawable.bullet);
+        super(gameEngine, R.drawable.bullet, 1);
 
         speedFactor = gameEngine.pixelFactor * -300d / 1000d;
     }
@@ -27,6 +27,11 @@ public class Bullet extends Sprite {
             // And return it to the pool
             parent.releaseBullet(this);
         }
+    }
+
+    @Override
+    public void processCollision(int collisionGroup) {
+        return;
     }
 
 
