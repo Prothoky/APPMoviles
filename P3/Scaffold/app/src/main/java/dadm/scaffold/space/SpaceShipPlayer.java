@@ -20,6 +20,8 @@ public class SpaceShipPlayer extends Sprite {
     private int maxY;
     private double speedFactor;
 
+    private int healthPoints;
+
 
     public SpaceShipPlayer(GameEngine gameEngine){
         super(gameEngine, R.drawable.ship, 1);
@@ -28,6 +30,8 @@ public class SpaceShipPlayer extends Sprite {
         maxY = gameEngine.height - imageHeight;
 
         initBulletPool(gameEngine);
+
+        healthPoints = 1;
     }
 
     private void initBulletPool(GameEngine gameEngine) {
@@ -63,10 +67,29 @@ public class SpaceShipPlayer extends Sprite {
 
     @Override
     public void processCollision(GameEngine gameEngine, int collisionGroup) {
-        // Si colisiona con un enemigo o un disparo enemigo se para el juego
+        // Si colisiona con un enemigo o un disparo enemigo se le baja 1 vida y si no le quedan
+        // vidas llama a shipDestroyed()
         if (collisionGroup == 3 || collisionGroup == 4) {
-            gameEngine.stopGame();
+            healthPoints--;
+            if (healthPoints <= 0) {
+                shipDestroyed(gameEngine);
+            }
         }
+    }
+
+    public int getHealthPoints() {
+        return healthPoints;
+    }
+
+    public void setHealthPoints(int healthPoints) {
+        this.healthPoints = healthPoints;
+    }
+
+    /*
+    Función que se llama cuando el jugador pierde todos sus health Points. Para el juego
+     */
+    private void shipDestroyed(GameEngine gameEngine) {
+        gameEngine.stopGame();
     }
 
     private void updatePosition(long elapsedMillis, InputController inputController) {
