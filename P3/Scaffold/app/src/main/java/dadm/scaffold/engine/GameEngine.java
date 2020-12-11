@@ -28,6 +28,7 @@ public class GameEngine {
     public int width;
     public int height;
     public double pixelFactor;
+    public double pixelFactorX;
     // Número de grupos de colisiones. No colisionan objetos de un mismo grupo
     // 0 - no colisionables
     // 1 - nave del jugador
@@ -55,6 +56,7 @@ public class GameEngine {
                 - theGameView.getPaddingTop() - theGameView.getPaddingTop();
 
         this.pixelFactor = this.height / 400d;
+        this.pixelFactorX = this.width / 800d;
 
         score = 0;
         generatorTime = 0;
@@ -220,7 +222,7 @@ public class GameEngine {
     private void enemyGenerator(long elapsedMillis) {
         generatorTime += elapsedMillis; // Sumamos tiempo
         if (generatorTime >= timeToNextEnemy) { // Si toca, generar nuevo enemigo y resetar tiempo
-            int randomPositionY = (int) (Math.random() * 1950 + 50);    // Posición x aleatoria
+            int randomPositionY = (int) ((Math.random() * 750) * pixelFactorX);    // Posición x aleatoria
             addGameObject(new SpaceShipEnemySmall(this, randomPositionY));
             // Reseteamos tiempo y calculamos nuevo tiempo de spawneo de enmigo
             generatorTime = 0;
