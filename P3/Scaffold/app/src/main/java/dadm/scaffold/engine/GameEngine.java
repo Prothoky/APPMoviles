@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dadm.scaffold.input.InputController;
+import dadm.scaffold.space.SpaceShipEnemySmall;
 
 public class GameEngine {
 
@@ -33,7 +34,13 @@ public class GameEngine {
     // 2 - ataques del jugador
     // 3 - naves enemigas
     // 4 - ataques enemigos
-    private int numCollisionGrups = 5;
+    private final int NUM_COLLISION_GROUPS = 5;
+    public int score;   // Puntuación del jugador
+    private int maxScore = 100;
+
+    private long generatorTime; // Contador de tiempo del generador de enemigos
+    private long timeToNextEnemy;   // Almacena cuando generar el próximo enemigo
+    private long maxTimeBetweenEnemies; // Tiempo máximo entre enemigos del generador
 
     private Activity mainActivity;
 
@@ -49,8 +56,13 @@ public class GameEngine {
 
         this.pixelFactor = this.height / 400d;
 
+        score = 0;
+        generatorTime = 0;
+        timeToNextEnemy = 2000; // Primer enemigo a los 2 segundos
+        maxTimeBetweenEnemies = 2000;
+
         // Inicializamos los grupos de colisiones
-        for (int i = 0; i < numCollisionGrups; i++) {
+        for (int i = 0; i < NUM_COLLISION_GROUPS; i++) {
             collisionGroups.add(new ArrayList<Hitbox>());
         }
     }
@@ -132,7 +144,9 @@ public class GameEngine {
                 System.out.println("grupo 0 = " + collisionGroups.get(0).size());
                 System.out.println("grupo 1 = " + collisionGroups.get(1).size());
                 System.out.println("grupo 2 = " + collisionGroups.get(2).size());
-                 */
+                System.out.println("grupo 3 = " + collisionGroups.get(3).size());
+                System.out.println("grupo 4 = " + collisionGroups.get(4).size());
+                */
             }
         }
         checkCollisions();  // Comprueba las colisiones
@@ -144,6 +158,7 @@ public class GameEngine {
                 gameObjects.add(objectsToAdd.remove(0));
             }
         }
+        enemyGenerator(elapsedMillis);  // El generador de enemigos decidirá si spawnear enemigo
     }
 
     public void onDraw() {
@@ -168,13 +183,13 @@ public class GameEngine {
     Cuando hay colisión, se la comunica a los sprites (y le da información de con quién colisionó)
      */
     private void checkCollisions() {
-        for (int i = 1; i < numCollisionGrups; i++) {
+        for (int i = 1; i < NUM_COLLISION_GROUPS; i++) {
             for (int j = 0; j < collisionGroups.get(i).size(); j++) {
                 Rect rect1 = collisionGroups.get(i).get(j).getRect();
-                for (int k = i + 1; k < numCollisionGrups; k++) {
+                for (int k = i + 1; k < NUM_COLLISION_GROUPS; k++) {
                     for (int l = 0; l < collisionGroups.get(k).size(); l++) {
                         if (Rect.intersects(rect1, collisionGroups.get(k).get(l).getRect())) {
-                            System.out.println(rect1.toString() + " colisiona con " + collisionGroups.get(k).get(l).getRect().toString());
+                            //System.out.println(rect1.toString() + " colisiona con " + collisionGroups.get(k).get(l).getRect().toString());
                             collisionGroups.get(i).get(j).getSprite().processCollision(this, collisionGroups.get(k).get(l).getSprite().getCollisionGroup());
                             collisionGroups.get(k).get(l).getSprite().processCollision(this, collisionGroups.get(i).get(j).getSprite().getCollisionGroup());
                         }
@@ -186,8 +201,38 @@ public class GameEngine {
 
     // Resetea la lista de hitboxes
     private void clearCollisionGroups() {
-        for (int i = 0; i < numCollisionGrups; i++) {
+        for (int i = 0; i < NUM_COLLISION_GROUPS; i++) {
             collisionGroups.get(i).clear();
         }
+    }
+
+    // Añade puntuación al jugador
+    public void addScore(int addedScore) {
+        score += addedScore;
+        if (score >= maxScore) {
+            levelCompleted();
+        }
+    }
+
+    /*
+    Spawnea un enemigo si se cumplen las condiciones (que pase x tiempo)
+     */
+    private void enemyGenerator(long elapsedMillis) {
+        generatorTime += elapsedMillis; // Sumamos tiempo
+        if (generatorTime >= timeToNextEnemy) { // Si toca, generar nuevo enemigo y resetar tiempo
+            int randomPositionY = (int) (Math.random() * 1950 + 50);    // Posición x aleatoria
+            addGameObject(new SpaceShipEnemySmall(this, randomPositionY));
+            // Reseteamos tiempo y calculamos nuevo tiempo de spawneo de enmigo
+            generatorTime = 0;
+            timeToNextEnemy = (long) (Math.random() * maxTimeBetweenEnemies);
+        }
+    }
+
+    /*
+    Función que se llama al pasarse el nivel. Detiene la partida
+     */
+    private void levelCompleted() {
+        System.out.println("has ganado");
+        stopGame();
     }
 }
