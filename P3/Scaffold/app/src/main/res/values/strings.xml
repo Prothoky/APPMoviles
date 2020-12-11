@@ -5,10 +5,10 @@
     <string name="start">Start game</string>
     <string name="game_title">Standford</string>
     <string name="pause_dialog_title">Pause Menu</string>
-    <string name="pause_dialog_message">pause message</string>
-    <string name="resume">resume</string>
-    <string name="stop">stop</string>
+    <string name="pause_dialog_message">Are you sure you want to exit?</string>
+    <string name="resume">NO</string>
+    <string name="stop">YES</string>
     <string name="score">Your Score</string>
-    <string name="replay">Volver a jugar</string>
-    <string name="exit">Salir</string>
+    <string name="replay">Try Againr</string>
+    <string name="exit">Exit</string>
 </resources>
