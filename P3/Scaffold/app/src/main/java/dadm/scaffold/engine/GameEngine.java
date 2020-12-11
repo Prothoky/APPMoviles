@@ -37,7 +37,7 @@ public class GameEngine {
     // 4 - ataques enemigos
     private final int NUM_COLLISION_GROUPS = 5;
     public int score;   // Puntuación del jugador
-    private int maxScore = 100;
+    private int maxScore = 1000;
 
     private long generatorTime; // Contador de tiempo del generador de enemigos
     private long timeToNextEnemy;   // Almacena cuando generar el próximo enemigo

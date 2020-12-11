@@ -5,13 +5,12 @@ import java.util.List;
 
 import dadm.scaffold.R;
 import dadm.scaffold.engine.GameEngine;
-import dadm.scaffold.engine.GameObject;
 import dadm.scaffold.engine.Sprite;
 import dadm.scaffold.input.InputController;
 
 public class SpaceShipPlayer extends Sprite {
 
-    private static final int INITIAL_BULLET_POOL_AMOUNT = 6;
+    private static final int INITIAL_BULLET_POOL_AMOUNT = 12;
     private static final long TIME_BETWEEN_BULLETS = 250;
     List<Bullet> bullets = new ArrayList<Bullet>();
     private long timeSinceLastFire;
@@ -24,7 +23,7 @@ public class SpaceShipPlayer extends Sprite {
 
 
     public SpaceShipPlayer(GameEngine gameEngine){
-        super(gameEngine, R.drawable.ship, 1);
+        super(gameEngine, R.drawable.ship_simple, 1, 3);
         speedFactor = pixelFactor * 100d / 1000d; // We want to move at 100px per second on a 400px tall screen
         maxX = gameEngine.width - imageWidth;
         maxY = gameEngine.height - imageHeight;
@@ -111,17 +110,43 @@ public class SpaceShipPlayer extends Sprite {
 
     private void checkFiring(long elapsedMillis, GameEngine gameEngine) {
         if (gameEngine.theInputController.isFiring && timeSinceLastFire > TIME_BETWEEN_BULLETS) {
-            Bullet bullet = getBullet();
-            if (bullet == null) {
-                return;
-            }
-            bullet.init(this, positionX + imageWidth/2, positionY);
-            gameEngine.addGameObject(bullet);
             timeSinceLastFire = 0;
+            fireBasic(gameEngine);
         }
         else {
             timeSinceLastFire += elapsedMillis;
         }
+    }
+
+    /*
+    Dispara un proyectil recto
+     */
+    private void fireBasic(GameEngine gameEngine) {
+        Bullet bullet1 = getBullet();
+        if (bullet1 == null) {
+            return;
+        }
+        bullet1.init(this, positionX + imageWidth/2, positionY, 0);
+        gameEngine.addGameObject(bullet1);
+    }
+
+    /*
+    Dispara dos proyectiles en diagonal
+     */
+    private void fireDual(GameEngine gameEngine) {
+        Bullet bullet1 = getBullet();
+        if (bullet1 == null) {
+            return;
+        }
+        Bullet bullet2 = getBullet();
+        if (bullet2 == null) {
+            bullet1.release();
+            return;
+        }
+        bullet1.init(this, positionX + imageWidth/2, positionY, 1);
+        gameEngine.addGameObject(bullet1);
+        bullet2.init(this, positionX + imageWidth/2, positionY, 2);
+        gameEngine.addGameObject(bullet2);
     }
 
 }
