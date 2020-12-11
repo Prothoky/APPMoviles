@@ -13,6 +13,7 @@ public abstract class Sprite extends GameObject {
     protected double positionX;
     protected double positionY;
     protected double rotation;
+    protected double scaleFactor;   // Factor de escalado del sprite
     protected int collisionGroup;   // Índice del grupo de colisión
 
     protected double pixelFactor;
@@ -28,6 +29,7 @@ public abstract class Sprite extends GameObject {
         Drawable spriteDrawable = r.getDrawable(drawableRes);
 
         this.collisionGroup = 0;
+        this.scaleFactor = 1;
 
         this.pixelFactor = gameEngine.pixelFactor;
 
@@ -43,6 +45,23 @@ public abstract class Sprite extends GameObject {
         Drawable spriteDrawable = r.getDrawable(drawableRes);
 
         this.collisionGroup = collisionGroup;
+        this.scaleFactor = 1;
+
+        this.pixelFactor = gameEngine.pixelFactor;
+
+        this.imageHeight = (int) (spriteDrawable.getIntrinsicHeight() * this.pixelFactor);
+        this.imageWidth = (int) (spriteDrawable.getIntrinsicWidth() * this.pixelFactor);
+
+        this.bitmap = ((BitmapDrawable) spriteDrawable).getBitmap();
+    }
+
+    // Constructor con seteo de collisionGroup y de scaleFactor
+    protected Sprite (GameEngine gameEngine, int drawableRes, int collisionGroup, double scaleFactor) {
+        Resources r = gameEngine.getContext().getResources();
+        Drawable spriteDrawable = r.getDrawable(drawableRes);
+
+        this.collisionGroup = collisionGroup;
+        this.scaleFactor = scaleFactor;
 
         this.pixelFactor = gameEngine.pixelFactor;
 
@@ -61,7 +80,7 @@ public abstract class Sprite extends GameObject {
             return;
         }
         matrix.reset();
-        matrix.postScale((float) pixelFactor, (float) pixelFactor);
+        matrix.postScale((float) (pixelFactor * scaleFactor), (float) (pixelFactor * scaleFactor));
         matrix.postTranslate((float) positionX, (float) positionY);
         matrix.postRotate((float) rotation, (float) (positionX + imageWidth/2), (float) (positionY + imageHeight/2));
         canvas.drawBitmap(bitmap, matrix, null);

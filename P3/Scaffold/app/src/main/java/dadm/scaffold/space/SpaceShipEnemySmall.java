@@ -12,7 +12,7 @@ public class SpaceShipEnemySmall extends Sprite {
     private double speedFactor;
 
     public SpaceShipEnemySmall(GameEngine gameEngine){
-        super(gameEngine, R.drawable.enemy_small, 2);
+        super(gameEngine, R.drawable.enemy_small_simple, 2, 4);
         speedFactor = gameEngine.pixelFactor * 50d / 1000d;
     }
 
