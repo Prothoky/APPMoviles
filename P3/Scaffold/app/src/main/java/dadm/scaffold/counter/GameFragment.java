@@ -19,6 +19,7 @@ import dadm.scaffold.ScaffoldActivity;
 import dadm.scaffold.engine.FramesPerSecondCounter;
 import dadm.scaffold.engine.GameEngine;
 import dadm.scaffold.engine.GameView;
+import dadm.scaffold.engine.ScoreView;
 import dadm.scaffold.input.JoystickInputController;
 import dadm.scaffold.space.SpaceShipEnemySmall;
 import dadm.scaffold.space.SpaceShipPlayer;
@@ -66,6 +67,7 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
                 theGameEngine.setTheInputController(new JoystickInputController(getView()));
                 theGameEngine.addGameObject(new SpaceShipPlayer(theGameEngine, mType,  R.drawable.ship_simple));
                 theGameEngine.addGameObject(new FramesPerSecondCounter(theGameEngine));
+                theGameEngine.addGameObject(new ScoreView(theGameEngine));
                 theGameEngine.startGame();
             }
         });
