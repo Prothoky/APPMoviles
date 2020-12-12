@@ -14,9 +14,8 @@ public class SpaceShipPlayer extends Sprite {
     private int maxY;
     private double speedFactor;
 
-    private int healthPoints;   // Vidas restantes
+    public int healthPoints;   // Vidas restantes
     private boolean basicWeapon; // Arma en uso
-
 
     /*
     Instancia la nave, dependiendo del tipo.
@@ -50,17 +49,19 @@ public class SpaceShipPlayer extends Sprite {
     public void onUpdate(long elapsedMillis, GameEngine gameEngine) {
         // Get the info from the inputController
         updatePosition(elapsedMillis, gameEngine.theInputController);
-        if (gameEngine.theInputController.isFiring) {   // Si se ha pulsado el botón, cambiar de arma y notificar que se ha recibido
+        if (gameEngine.theInputController.weaponSwap) {   // Si se ha pulsado el botón, cambiar de arma y notificar que se ha recibido
             basicWeapon = !basicWeapon;
-            ((JoystickInputController) gameEngine.theInputController).fireApplied();
+            ((JoystickInputController) gameEngine.theInputController).weaponSwapped();
         }
-        checkFiring(elapsedMillis, gameEngine);
+        checkFire(elapsedMillis, gameEngine);
     }
 
+    /*
+    Si colisiona con un enemigo o un disparo enemigo se le baja 1 vida y si no le quedan
+    vidas llama a shipDestroyed()
+     */
     @Override
     public void processCollision(GameEngine gameEngine, int collisionGroup) {
-        // Si colisiona con un enemigo o un disparo enemigo se le baja 1 vida y si no le quedan
-        // vidas llama a shipDestroyed()
         if (collisionGroup == 3 || collisionGroup == 4) {
             healthPoints--;
             if (healthPoints <= 0) {
@@ -78,11 +79,13 @@ public class SpaceShipPlayer extends Sprite {
     }
 
     /*
-    Función que se llama cuando el jugador pierde todos sus health Points. Para el juego
+    Función que se llama cuando el jugador pierde todos sus health Points. Llama al levelCompleted()
+    de gameEngine con el parámetro a false (derrota)
      */
     private void shipDestroyed(GameEngine gameEngine) {
         gameEngine.levelCompleted(false);
         gameEngine.stopGame();
+        gameEngine.playSound(2);
     }
 
     private void updatePosition(long elapsedMillis, InputController inputController) {
@@ -102,8 +105,8 @@ public class SpaceShipPlayer extends Sprite {
         }
     }
 
-
-    private void checkFiring(long elapsedMillis, GameEngine gameEngine) {
+    // Dispara con el arma en uso si ha pasado el tiempo desde el anterior disparo
+    private void checkFire(long elapsedMillis, GameEngine gameEngine) {
         if (timeSinceLastFire > TIME_BETWEEN_BULLETS) {
             timeSinceLastFire = 0;
             if (basicWeapon) {  // Dispara con el arma en uso
@@ -127,6 +130,7 @@ public class SpaceShipPlayer extends Sprite {
         }
         bullet1.init(this, positionX + imageWidth/2, positionY, 0);
         gameEngine.addGameObject(bullet1);
+        gameEngine.playSound(0);
     }
 
     /*
@@ -146,6 +150,7 @@ public class SpaceShipPlayer extends Sprite {
         gameEngine.addGameObject(bullet1);
         bullet2.init(this, positionX + imageWidth/2, positionY, 2);
         gameEngine.addGameObject(bullet2);
+        gameEngine.playSound(0);
     }
 
 }

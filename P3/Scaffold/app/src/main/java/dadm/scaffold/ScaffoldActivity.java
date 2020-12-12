@@ -11,6 +11,7 @@ import dadm.scaffold.counter.ChoseShipFragment;
 import dadm.scaffold.counter.EndFragment;
 import dadm.scaffold.counter.GameFragment;
 import dadm.scaffold.counter.MainMenuFragment;
+import dadm.scaffold.engine.AudioController;
 
 public class ScaffoldActivity extends AppCompatActivity {
 
@@ -50,6 +51,12 @@ public class ScaffoldActivity extends AppCompatActivity {
                 .replace(R.id.container, dst, TAG_FRAGMENT)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        AudioController.StopMusic();
     }
 
     @Override

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import dadm.scaffold.BaseFragment;
 import dadm.scaffold.R;
 import dadm.scaffold.ScaffoldActivity;
+import dadm.scaffold.engine.AudioController;
 
 
 public class MainMenuFragment extends BaseFragment implements View.OnClickListener {
@@ -20,6 +21,7 @@ public class MainMenuFragment extends BaseFragment implements View.OnClickListen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        AudioController.PlayMusic(getContext(), 0);
         View rootView = inflater.inflate(R.layout.fragment_main_menu, container, false);
         return rootView;
     }

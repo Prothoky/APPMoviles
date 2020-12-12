@@ -5,7 +5,10 @@ import dadm.scaffold.engine.GameEngine;
 import dadm.scaffold.engine.Sprite;
 
 /*
-Enemigo básico, sprite pequeño, se mueve hacia delante
+Clase de nave enemiga de tipo kamikaze
+Velocidad: rapida
+Tamaño: pequeño
+Disparo: no
  */
 public class SpaceShipEnemySmall extends Sprite {
 
@@ -32,13 +35,14 @@ public class SpaceShipEnemySmall extends Sprite {
         }
     }
 
+    // Si ha chocado con una bala del jugador o con el jugador, se destruye, suma puntos y reproduce sonido
     @Override
     public void processCollision(GameEngine gameEngine, int collisionGroup) {
         if (collisionGroup == 1 || collisionGroup == 2) {  // Si colisiona con un disparo del jugador desaparece y suma puntos
             gameEngine.addScore(scoreGiven);
             gameEngine.removeGameObject(this);
+            gameEngine.playSound(2);
         }
-        return;
     }
 
 }

@@ -13,6 +13,9 @@ import dadm.scaffold.engine.GameEngine;
 import dadm.scaffold.engine.GameView;
 import dadm.scaffold.engine.Sprite;
 
+/*
+Clase que crea una animación de explosión en una posición determinada y se destruye al finalizarla
+ */
 public class Explosion extends Sprite {
 
     private Resources r;

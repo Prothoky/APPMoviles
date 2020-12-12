@@ -12,11 +12,14 @@ private Paint paint;
 
 private String scoreText = "";
 
+/*
+Clase que muestra la puntuación y las vidas restantes por pantalla
+ */
 public ScoreView(GameEngine gameEngine) {
     paint = new Paint();
     paint.setTextAlign(Paint.Align.CENTER);
     textHeight = (float) (25 * gameEngine.pixelFactor);
-    textWidth = (float) (50 * gameEngine.pixelFactor);
+    textWidth = (float) (80 * gameEngine.pixelFactor);
     paint.setTextSize(textHeight / 2);
 }
 
@@ -25,7 +28,7 @@ public ScoreView(GameEngine gameEngine) {
 
     @Override
     public void onUpdate(long elapsedMillis, GameEngine gameEngine) {
-        scoreText = "Puntuacion: " + gameEngine.score;
+        scoreText = "  HEALTH: " + gameEngine.player.healthPoints + " -  SCORE: " + gameEngine.score;
     }
 
     @Override
@@ -33,7 +36,7 @@ public ScoreView(GameEngine gameEngine) {
         paint.setColor(Color.GRAY);
         canvas.drawRect(0, 0, textWidth*2, textHeight, paint);
         paint.setColor(Color.WHITE);
-        canvas.drawText(scoreText, textWidth, textHeight*2/3 , paint);
+        canvas.drawText(scoreText, 200, textHeight*2/3 , paint);
     }
 }
 

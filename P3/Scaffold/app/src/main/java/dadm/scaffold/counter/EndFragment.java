@@ -1,24 +1,15 @@
 package dadm.scaffold.counter;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.security.spec.ECField;
 
 import dadm.scaffold.R;
 import dadm.scaffold.ScaffoldActivity;
-import dadm.scaffold.engine.FramesPerSecondCounter;
-import dadm.scaffold.engine.GameEngine;
-import dadm.scaffold.engine.GameView;
-import dadm.scaffold.input.JoystickInputController;
-import dadm.scaffold.space.SpaceShipPlayer;
+import dadm.scaffold.engine.AudioController;
 
 public class EndFragment extends Fragment implements View.OnClickListener{
 
@@ -29,7 +20,6 @@ public class EndFragment extends Fragment implements View.OnClickListener{
     private boolean mWin;
 
     public EndFragment() {
-        // Required empty public constructor
     }
 
     public static EndFragment newInstance(int param1, boolean param2) {
@@ -44,6 +34,7 @@ public class EndFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AudioController.StopMusic();
         if (getArguments() != null) {
             mScore = getArguments().getInt(ARG_SCORE);
             mWin = getArguments().getBoolean(ARG_WIN);
@@ -77,6 +68,7 @@ public class EndFragment extends Fragment implements View.OnClickListener{
             ((ScaffoldActivity)getActivity()).choseShip();
         }
         if(view.getId() == R.id.quit_button){
+            AudioController.StopMusic();
             ((ScaffoldActivity)getActivity()).finish();
         }
     }

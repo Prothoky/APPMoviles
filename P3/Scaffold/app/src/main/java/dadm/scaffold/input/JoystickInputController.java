@@ -58,10 +58,10 @@ public class JoystickInputController extends InputController {
         public boolean onTouch(View v, MotionEvent event) {
             int action = event.getActionMasked();
             if (action == MotionEvent.ACTION_DOWN) {
-                isFiring = true;
+                weaponSwap = true;
             }
             else {
-                isFiring = false;
+                weaponSwap = false;
             }
             return true;
         }
@@ -70,8 +70,8 @@ public class JoystickInputController extends InputController {
     /*
     Comunica al controlador del input que se ha recibido el evento de pulsado de botón
      */
-    public void fireApplied() {
-        isFiring = false;
+    public void weaponSwapped() {
+        weaponSwap = false;
     }
 }
 

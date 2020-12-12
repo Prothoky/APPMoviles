@@ -37,7 +37,7 @@ public class BasicInputController extends InputController implements View.OnTouc
                 horizontalFactor += 1;
             }
             else if (id == R.id.keypad_fire) {
-                isFiring = true;
+                weaponSwap = true;
             }
         }
         else if (action == MotionEvent.ACTION_UP) {
@@ -54,7 +54,7 @@ public class BasicInputController extends InputController implements View.OnTouc
                 horizontalFactor -= 1;
             }
             else if (id == R.id.keypad_fire) {
-                isFiring = false;
+                weaponSwap = false;
             }
         }
         return false;

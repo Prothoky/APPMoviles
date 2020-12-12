@@ -11,11 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
+import android.widget.Space;
 import android.widget.TextView;
 
 import dadm.scaffold.BaseFragment;
 import dadm.scaffold.R;
 import dadm.scaffold.ScaffoldActivity;
+import dadm.scaffold.engine.AudioController;
 import dadm.scaffold.engine.FramesPerSecondCounter;
 import dadm.scaffold.engine.GameEngine;
 import dadm.scaffold.engine.GameView;
@@ -53,6 +55,7 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
+        AudioController.PlayMusic(getContext(), 1);
         super.onViewCreated(view, savedInstanceState);
         view.findViewById(R.id.btn_play_pause).setOnClickListener(this);
         final ViewTreeObserver observer = view.getViewTreeObserver();
@@ -65,12 +68,16 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
                 GameView gameView = (GameView) getView().findViewById(R.id.gameView);
                 theGameEngine = new GameEngine(getActivity(), gameView);
                 theGameEngine.setTheInputController(new JoystickInputController(getView()));
+                SpaceShipPlayer player;
                 if (mType == 0) {
-                    theGameEngine.addGameObject(new SpaceShipPlayer(theGameEngine, mType,  R.drawable.ship, 1.2f));
+                    player = new SpaceShipPlayer(theGameEngine, mType,  R.drawable.ship, 1.2f);
+                    theGameEngine.addGameObject(player);
                 } else {
-                    theGameEngine.addGameObject(new SpaceShipPlayer(theGameEngine, mType,  R.drawable.ship_simple, 3.5f));
+                    player = new SpaceShipPlayer(theGameEngine, mType,  R.drawable.ship_simple, 3.5f);
+                    theGameEngine.addGameObject(player);
                 }
-                theGameEngine.addGameObject(new FramesPerSecondCounter(theGameEngine));
+                theGameEngine.player = player;
+                //theGameEngine.addGameObject(new FramesPerSecondCounter(theGameEngine));
                 theGameEngine.addGameObject(new ScoreView(theGameEngine));
                 theGameEngine.startGame();
             }
