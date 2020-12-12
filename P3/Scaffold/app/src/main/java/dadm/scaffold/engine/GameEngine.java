@@ -9,10 +9,13 @@ import java.util.List;
 
 import dadm.scaffold.ScaffoldActivity;
 import dadm.scaffold.input.InputController;
+import dadm.scaffold.space.Bullet;
+import dadm.scaffold.space.SpaceShipEnemyMedium;
 import dadm.scaffold.space.SpaceShipEnemySmall;
 
 public class GameEngine {
-
+    private static final int INITIAL_BULLET_POOL_AMOUNT_PLAYER = 12;
+    private static final int INITIAL_BULLET_POOL_AMOUNT_ENEMY = 12;
 
     private List<GameObject> gameObjects = new ArrayList<GameObject>();
     private List<GameObject> objectsToAdd = new ArrayList<GameObject>();
@@ -20,6 +23,8 @@ public class GameEngine {
     // Lista de hitboxes ordenadas por grupo de colisión
     // Es una lista de Hitbox, que contiene un Rect + su gameObject
     private List<List<Hitbox>> collisionGroups = new ArrayList<>();
+    List<Bullet> bulletsPlayer = new ArrayList<Bullet>();
+    List<Bullet> bulletsEnemy = new ArrayList<Bullet>();
 
     private UpdateThread theUpdateThread;
     private DrawThread theDrawThread;
@@ -68,6 +73,9 @@ public class GameEngine {
         for (int i = 0; i < NUM_COLLISION_GROUPS; i++) {
             collisionGroups.add(new ArrayList<Hitbox>());
         }
+
+        initBulletPoolPlayer();
+        initBulletPoolEnemy();
     }
 
     public void setTheInputController(InputController inputController) {
@@ -223,8 +231,14 @@ public class GameEngine {
     private void enemyGenerator(long elapsedMillis) {
         generatorTime += elapsedMillis; // Sumamos tiempo
         if (generatorTime >= timeToNextEnemy) { // Si toca, generar nuevo enemigo y resetar tiempo
-            int randomPositionY = (int) ((Math.random() * 750) * pixelFactorX);    // Posición x aleatoria
-            addGameObject(new SpaceShipEnemySmall(this, randomPositionY));
+            int randomShip = (int) (Math.random() * 2);
+            if (randomShip == 0) {
+                int randomPositionY = (int) ((Math.random() * 750) * pixelFactorX);    // Posición x aleatoria
+                addGameObject(new SpaceShipEnemySmall(this, randomPositionY));
+            } else {
+                int randomPositionY = (int) ((Math.random() * 700) * pixelFactorX);    // Posición x aleatoria
+                addGameObject(new SpaceShipEnemyMedium(this, randomPositionY));
+            }
             // Reseteamos tiempo y calculamos nuevo tiempo de spawneo de enmigo
             generatorTime = 0;
             timeToNextEnemy = (long) (Math.random() * maxTimeBetweenEnemies);
@@ -239,5 +253,39 @@ public class GameEngine {
         ((ScaffoldActivity)mainActivity).finishGame(score,win);
     }
 
+
+    private void initBulletPoolPlayer() {
+        for (int i=0; i<INITIAL_BULLET_POOL_AMOUNT_PLAYER; i++) {
+            bulletsPlayer.add(new Bullet(this));
+        }
+    }
+
+    public Bullet getBulletPlayer() {
+        if (bulletsPlayer.isEmpty()) {
+            return null;
+        }
+        return bulletsPlayer.remove(0);
+    }
+
+    public void releaseBulletPlayer(Bullet bullet) {
+        bulletsPlayer.add(bullet);
+    }
+
+    private void initBulletPoolEnemy() {
+        for (int i=0; i<INITIAL_BULLET_POOL_AMOUNT_ENEMY; i++) {
+            bulletsEnemy.add(new Bullet(this, 4));
+        }
+    }
+
+    public Bullet getBulletEnemy() {
+        if (bulletsEnemy.isEmpty()) {
+            return null;
+        }
+        return bulletsEnemy.remove(0);
+    }
+
+    public void releaseBulletEnemy(Bullet bullet) {
+        bulletsEnemy.add(bullet);
+    }
 
 }
