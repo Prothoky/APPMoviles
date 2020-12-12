@@ -103,5 +103,9 @@ public abstract class Sprite extends GameObject {
     // Método que se debe llamar al detectar colisión
     public abstract void processCollision(GameEngine gameEngine, int collisionGroup);
 
+    public int getImageWidth() {
+        return imageWidth;
+    }
+
 
 }

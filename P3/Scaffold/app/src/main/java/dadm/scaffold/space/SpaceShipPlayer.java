@@ -1,9 +1,5 @@
 package dadm.scaffold.space;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import dadm.scaffold.R;
 import dadm.scaffold.engine.GameEngine;
 import dadm.scaffold.engine.Sprite;
 import dadm.scaffold.input.InputController;
@@ -11,9 +7,7 @@ import dadm.scaffold.input.JoystickInputController;
 
 public class SpaceShipPlayer extends Sprite {
 
-    private static final int INITIAL_BULLET_POOL_AMOUNT = 12;
     private static final long TIME_BETWEEN_BULLETS = 350;
-    List<Bullet> bullets = new ArrayList<Bullet>();
     private long timeSinceLastFire;
 
     private int maxX;
@@ -42,26 +36,8 @@ public class SpaceShipPlayer extends Sprite {
             maxY = gameEngine.height - imageHeight;
             healthPoints = 1;
         }
-        initBulletPool(gameEngine);
 
         basicWeapon = true;
-    }
-
-    private void initBulletPool(GameEngine gameEngine) {
-        for (int i=0; i<INITIAL_BULLET_POOL_AMOUNT; i++) {
-            bullets.add(new Bullet(gameEngine));
-        }
-    }
-
-    private Bullet getBullet() {
-        if (bullets.isEmpty()) {
-            return null;
-        }
-        return bullets.remove(0);
-    }
-
-    void releaseBullet(Bullet bullet) {
-        bullets.add(bullet);
     }
 
 
@@ -146,7 +122,7 @@ public class SpaceShipPlayer extends Sprite {
     Dispara un proyectil recto
      */
     private void fireBasic(GameEngine gameEngine) {
-        Bullet bullet1 = getBullet();
+        Bullet bullet1 = gameEngine.getBulletPlayer();
         if (bullet1 == null) {
             return;
         }
@@ -158,13 +134,13 @@ public class SpaceShipPlayer extends Sprite {
     Dispara dos proyectiles en diagonal
      */
     private void fireDual(GameEngine gameEngine) {
-        Bullet bullet1 = getBullet();
+        Bullet bullet1 = gameEngine.getBulletPlayer();
         if (bullet1 == null) {
             return;
         }
-        Bullet bullet2 = getBullet();
+        Bullet bullet2 = gameEngine.getBulletPlayer();
         if (bullet2 == null) {
-            bullet1.release();
+            bullet1.release(gameEngine);
             return;
         }
         bullet1.init(this, positionX + imageWidth/2, positionY, 1);

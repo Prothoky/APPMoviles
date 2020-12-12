@@ -9,13 +9,20 @@ public class Bullet extends Sprite {
     private double speedFactor;
     private double speedFactorX;
     private Explosion explosion;
-    private SpaceShipPlayer parent;
+    private Sprite parent;
 
     public Bullet(GameEngine gameEngine){
         super(gameEngine, R.drawable.shot_1_simple, 2, 4);
 
         speedFactor = gameEngine.pixelFactor * -300d / 1000d;
-        explosion = new Explosion(gameEngine,R.drawable.explosion);
+        explosion = new Explosion(gameEngine,R.drawable.explosion0);
+    }
+
+    public Bullet(GameEngine gameEngine, int collisionGroup){
+        super(gameEngine, R.drawable.shot_2_simple, collisionGroup, 4);
+
+        speedFactor = gameEngine.pixelFactor * 300d / 1000d;
+        explosion = new Explosion(gameEngine,R.drawable.explosion0);
     }
 
     @Override
@@ -26,36 +33,70 @@ public class Bullet extends Sprite {
         positionY += speedFactor * elapsedMillis;
         positionX += speedFactorX * elapsedMillis;
         if (positionY < -imageHeight) {
-            gameEngine.removeGameObject(this);
             // And return it to the pool
-            parent.releaseBullet(this);
+            if (collisionGroup == 4) {
+                gameEngine.releaseBulletEnemy(this);
+            } else {
+                gameEngine.releaseBulletPlayer(this);
+            }
+            gameEngine.removeGameObject(this);
+        }
+        if (positionY > gameEngine.height + imageWidth) {
+            if (collisionGroup == 4) {
+                gameEngine.releaseBulletEnemy(this);
+            } else {
+                gameEngine.releaseBulletPlayer(this);
+            }
+            gameEngine.removeGameObject(this);
         }
         if (positionX < -imageWidth) {
+            if (collisionGroup == 4) {
+                gameEngine.releaseBulletEnemy(this);
+            } else {
+                gameEngine.releaseBulletPlayer(this);
+            }
             gameEngine.removeGameObject(this);
-            parent.releaseBullet(this);
         }
         if (positionX > gameEngine.width + imageWidth) {
+            if (collisionGroup == 4) {
+                gameEngine.releaseBulletEnemy(this);
+            } else {
+                gameEngine.releaseBulletPlayer(this);
+            }
             gameEngine.removeGameObject(this);
-            parent.releaseBullet(this);
         }
     }
+
 
     @Override
     public void processCollision(GameEngine gameEngine, int collisionGroup) {
-        if (collisionGroup == 3 || collisionGroup == 4) {
-            explosion.updatePos(positionX,positionY);
-            gameEngine.addGameObject(explosion);
-            parent.releaseBullet(this);
-            gameEngine.removeGameObject(this);
-
+        if (collisionGroup == 1) {
+            if (this.collisionGroup == 4) {
+                explosion.updatePos(positionX, positionY);
+                gameEngine.addGameObject(explosion);
+                gameEngine.releaseBulletEnemy(this);
+                gameEngine.removeGameObject(this);
+            }
+        } else if (collisionGroup == 3) {
+            if (this.collisionGroup != 4) {
+                explosion.updatePos(positionX, positionY);
+                gameEngine.addGameObject(explosion);
+                gameEngine.releaseBulletPlayer(this);
+                gameEngine.removeGameObject(this);
+            }
         }
     }
 
-
-    public void init(SpaceShipPlayer parentPlayer, double initPositionX, double initPositionY, int bulletType) {
-        positionX = initPositionX - imageWidth/2;
-        positionY = initPositionY - imageHeight/2;
-        parent = parentPlayer;
+    public void init(Sprite parentPlayer, double initPositionX, double initPositionY, int bulletType) {
+        if (collisionGroup == 4) {
+            positionX = initPositionX + imageWidth/2 - getImageWidth()/2;
+            positionY = initPositionY + imageHeight;
+            parent = parentPlayer;
+        } else {
+            positionX = initPositionX - imageWidth/2;
+            positionY = initPositionY - imageHeight/2;
+            parent = parentPlayer;
+        }
         switch (bulletType) {
             case 0:
                 speedFactorX = 0;
@@ -69,7 +110,11 @@ public class Bullet extends Sprite {
         }
     }
 
-    public void release() {
-        parent.releaseBullet(this);
+    public void release(GameEngine gameEngine) {
+        if (collisionGroup == 4) {
+            gameEngine.releaseBulletEnemy(this);
+        } else {
+            gameEngine.releaseBulletPlayer(this);
+        }
     }
 }

@@ -19,7 +19,7 @@ public class Explosion extends Sprite {
     private long tiempo =0;
 
     public Explosion(GameEngine gameEngine, int spriteDrawable) {
-        super(gameEngine, R.drawable.explosion);
+        super(gameEngine, R.drawable.explosion0);
         r = gameEngine.getContext().getResources();
 
     }
