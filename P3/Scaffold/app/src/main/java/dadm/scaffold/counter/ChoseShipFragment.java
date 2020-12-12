@@ -50,12 +50,12 @@ public class ChoseShipFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.buttonShip1){
-            ((ScaffoldActivity)getActivity()).type=1;
-            ((ScaffoldActivity)getActivity()).startGame(1);
+            ((ScaffoldActivity)getActivity()).type=0;
+            ((ScaffoldActivity)getActivity()).startGame(0);
         }
         if(view.getId() == R.id.buttonShip2){
-            ((ScaffoldActivity)getActivity()).type=2;
-            ((ScaffoldActivity)getActivity()).startGame(2);
+            ((ScaffoldActivity)getActivity()).type=1;
+            ((ScaffoldActivity)getActivity()).startGame(1);
         }
     }
 }

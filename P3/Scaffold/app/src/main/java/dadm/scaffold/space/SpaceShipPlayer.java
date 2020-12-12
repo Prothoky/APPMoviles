@@ -23,9 +23,9 @@ public class SpaceShipPlayer extends Sprite {
     La primera es lenta y tiene 3 vidas
     La segunda es rápida y tiene 1 vida
      */
-    public SpaceShipPlayer(GameEngine gameEngine, int type, int drawableRes){
-        super(gameEngine, drawableRes, 1, 3);
-        if (type == 0 ){
+    public SpaceShipPlayer(GameEngine gameEngine, int type, int drawableRes, float resizeFactor) {
+        super(gameEngine, drawableRes, 1, resizeFactor);
+        if (type == 1 ){
             speedFactor = pixelFactor * 80d / 1000d; // We want to move at 100px per second on a 400px tall screen
             maxX = gameEngine.width - imageWidth;
             maxY = gameEngine.height - imageHeight;
@@ -39,7 +39,6 @@ public class SpaceShipPlayer extends Sprite {
 
         basicWeapon = true;
     }
-
 
     @Override
     public void startGame() {
