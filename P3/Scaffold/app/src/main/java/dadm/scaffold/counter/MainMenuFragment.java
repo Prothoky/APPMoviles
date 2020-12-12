@@ -30,10 +30,17 @@ public class MainMenuFragment extends BaseFragment implements View.OnClickListen
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         view.findViewById(R.id.btn_start).setOnClickListener(this);
+        view.findViewById(R.id.btn_exit).setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View v) {
-        ((ScaffoldActivity)getActivity()).choseShip();
+        if(v.getId() == R.id.btn_start )
+            ((ScaffoldActivity)getActivity()).choseShip();
+        if(v.getId() == R.id.btn_exit ){
+            ((ScaffoldActivity)getActivity()).finish();
+        }
+
     }
 }

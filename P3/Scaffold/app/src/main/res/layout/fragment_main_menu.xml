@@ -43,4 +43,18 @@
         android:textColor="@color/colorPrimary"
         android:textSize="40sp" />
 
+    <Button
+        android:id="@+id/btn_exit"
+        android:layout_width="239dp"
+        android:layout_height="69dp"
+        android:layout_gravity="center"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:layout_marginTop="100sp"
+        android:padding="5dp"
+        android:text="@string/exit"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="40sp" />
+
 </FrameLayout>
