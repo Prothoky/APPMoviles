@@ -1,10 +1,13 @@
 package dadm.scaffold;
 
+import android.content.Intent;
 import android.os.Build;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import dadm.scaffold.counter.EndFragment;
 import dadm.scaffold.counter.GameFragment;
 import dadm.scaffold.counter.MainMenuFragment;
 
@@ -28,7 +31,11 @@ public class ScaffoldActivity extends AppCompatActivity {
         navigateToFragment( new GameFragment());
     }
 
-    private void navigateToFragment(BaseFragment dst) {
+    public void finishGame(int score) {
+        navigateToFragment(new EndFragment().newInstance(score));
+    }
+
+    private void navigateToFragment(Fragment dst) {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container, dst, TAG_FRAGMENT)
@@ -70,4 +77,5 @@ public class ScaffoldActivity extends AppCompatActivity {
             }
         }
     }
+
 }

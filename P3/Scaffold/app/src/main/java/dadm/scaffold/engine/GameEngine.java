@@ -7,6 +7,7 @@ import android.graphics.Rect;
 import java.util.ArrayList;
 import java.util.List;
 
+import dadm.scaffold.ScaffoldActivity;
 import dadm.scaffold.input.InputController;
 import dadm.scaffold.space.SpaceShipEnemySmall;
 
@@ -233,8 +234,10 @@ public class GameEngine {
     /*
     Función que se llama al pasarse el nivel. Detiene la partida
      */
-    private void levelCompleted() {
-        System.out.println("has ganado");
+    public void levelCompleted() {
         stopGame();
+        ((ScaffoldActivity)mainActivity).finishGame(score);
     }
+
+
 }
