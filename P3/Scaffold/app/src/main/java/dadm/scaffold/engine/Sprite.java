@@ -18,7 +18,7 @@ public abstract class Sprite extends GameObject {
 
     protected double pixelFactor;
 
-    private final Bitmap bitmap;
+    protected Bitmap bitmap;
     protected final int imageHeight;
     protected final int imageWidth;
 
@@ -71,6 +71,7 @@ public abstract class Sprite extends GameObject {
         this.bitmap = ((BitmapDrawable) spriteDrawable).getBitmap();
     }
 
+
     @Override
     public void onDraw(Canvas canvas) {
         if (positionX > canvas.getWidth()
@@ -101,5 +102,6 @@ public abstract class Sprite extends GameObject {
 
     // Método que se debe llamar al detectar colisión
     public abstract void processCollision(GameEngine gameEngine, int collisionGroup);
+
 
 }

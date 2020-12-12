@@ -11,6 +11,4 @@
     <string name="score">Your Score</string>
     <string name="replay">Try Again</string>
     <string name="exit">Exit</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

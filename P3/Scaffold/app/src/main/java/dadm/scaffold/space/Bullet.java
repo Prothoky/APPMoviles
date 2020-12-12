@@ -8,13 +8,14 @@ public class Bullet extends Sprite {
 
     private double speedFactor;
     private double speedFactorX;
-
+    private Explosion explosion;
     private SpaceShipPlayer parent;
 
     public Bullet(GameEngine gameEngine){
         super(gameEngine, R.drawable.shot_1_simple, 2, 4);
 
         speedFactor = gameEngine.pixelFactor * -300d / 1000d;
+        explosion = new Explosion(gameEngine,R.drawable.explosion);
     }
 
     @Override
@@ -42,8 +43,11 @@ public class Bullet extends Sprite {
     @Override
     public void processCollision(GameEngine gameEngine, int collisionGroup) {
         if (collisionGroup == 3 || collisionGroup == 4) {
+            explosion.updatePos(positionX,positionY);
+            gameEngine.addGameObject(explosion);
             parent.releaseBullet(this);
             gameEngine.removeGameObject(this);
+
         }
     }
 
