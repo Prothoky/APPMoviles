@@ -213,7 +213,7 @@ public class GameEngine {
     public void addScore(int addedScore) {
         score += addedScore;
         if (score >= maxScore) {
-            levelCompleted();
+            levelCompleted(true);
         }
     }
 
@@ -234,9 +234,9 @@ public class GameEngine {
     /*
     Función que se llama al pasarse el nivel. Detiene la partida
      */
-    public void levelCompleted() {
+    public void levelCompleted(boolean win) {
         stopGame();
-        ((ScaffoldActivity)mainActivity).finishGame(score);
+        ((ScaffoldActivity)mainActivity).finishGame(score,win);
     }
 
 

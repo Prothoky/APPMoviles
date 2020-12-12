@@ -26,13 +26,26 @@ import dadm.scaffold.space.SpaceShipPlayer;
 
 public class GameFragment extends BaseFragment implements View.OnClickListener {
     private GameEngine theGameEngine;
+    private static final String ARG_TYPE = "param";
+    private int mType = 1;
 
     public GameFragment() {
+    }
+
+    public static GameFragment newInstance(int param){
+        GameFragment fragment = new GameFragment();
+        Bundle args = new Bundle();
+        args.putInt(ARG_TYPE, param);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (getArguments() != null) {
+            mType = getArguments().getInt(ARG_TYPE);
+        }
         View rootView = inflater.inflate(R.layout.fragment_game, container, false);
         return rootView;
     }
@@ -51,7 +64,7 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
                 GameView gameView = (GameView) getView().findViewById(R.id.gameView);
                 theGameEngine = new GameEngine(getActivity(), gameView);
                 theGameEngine.setTheInputController(new JoystickInputController(getView()));
-                theGameEngine.addGameObject(new SpaceShipPlayer(theGameEngine, 1,  R.drawable.ship_simple));
+                theGameEngine.addGameObject(new SpaceShipPlayer(theGameEngine, mType,  R.drawable.ship_simple));
                 theGameEngine.addGameObject(new FramesPerSecondCounter(theGameEngine));
                 theGameEngine.startGame();
             }
@@ -108,7 +121,7 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                         theGameEngine.stopGame();
-                        ((ScaffoldActivity)getActivity()).navigateBack();
+                        ((ScaffoldActivity)getActivity()).backToMenu();
                     }
                 });
         ALB.setOnCancelListener(new DialogInterface.OnCancelListener() {

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import dadm.scaffold.counter.ChoseShipFragment;
 import dadm.scaffold.counter.EndFragment;
 import dadm.scaffold.counter.GameFragment;
 import dadm.scaffold.counter.MainMenuFragment;
@@ -14,6 +15,7 @@ import dadm.scaffold.counter.MainMenuFragment;
 public class ScaffoldActivity extends AppCompatActivity {
 
     private static final String TAG_FRAGMENT = "content";
+    public int type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +28,20 @@ public class ScaffoldActivity extends AppCompatActivity {
         }
     }
 
-    public void startGame() {
-        // Navigate the the game fragment, which makes the start automatically
-        navigateToFragment( new GameFragment());
+    public void backToMenu(){
+        navigateToFragment( new MainMenuFragment());
     }
 
-    public void finishGame(int score) {
-        navigateToFragment(new EndFragment().newInstance(score));
+    public void choseShip(){
+        navigateToFragment( new ChoseShipFragment());
+    }
+
+    public void startGame(int type) {
+        navigateToFragment( new GameFragment().newInstance(type));
+    }
+
+    public void finishGame(int score, boolean win) {
+        navigateToFragment(new EndFragment().newInstance(score, win));
     }
 
     private void navigateToFragment(Fragment dst) {

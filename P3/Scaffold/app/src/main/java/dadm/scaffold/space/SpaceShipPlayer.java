@@ -106,7 +106,7 @@ public class SpaceShipPlayer extends Sprite {
     Función que se llama cuando el jugador pierde todos sus health Points. Para el juego
      */
     private void shipDestroyed(GameEngine gameEngine) {
-        gameEngine.levelCompleted();
+        gameEngine.levelCompleted(false);
         gameEngine.stopGame();
     }
 

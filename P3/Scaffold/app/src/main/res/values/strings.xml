@@ -11,4 +11,7 @@
     <string name="score">Your Score</string>
     <string name="replay">Try Again</string>
     <string name="exit">Exit</string>
+    <string name="chose">Choose your Spaceship</string>
+    <string name="win">YOU   WIN</string>
+    <string name="lose">YOU   LOSE</string>
 </resources>

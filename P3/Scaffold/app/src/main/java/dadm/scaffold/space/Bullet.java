@@ -15,7 +15,7 @@ public class Bullet extends Sprite {
         super(gameEngine, R.drawable.shot_1_simple, 2, 4);
 
         speedFactor = gameEngine.pixelFactor * -300d / 1000d;
-        explosion = new Explosion(gameEngine,R.drawable.explosion);
+        explosion = new Explosion(gameEngine,R.drawable.explosion0);
     }
 
     @Override

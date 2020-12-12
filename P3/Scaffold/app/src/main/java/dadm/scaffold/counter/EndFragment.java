@@ -22,18 +22,21 @@ import dadm.scaffold.space.SpaceShipPlayer;
 
 public class EndFragment extends Fragment implements View.OnClickListener{
 
-    private static final String ARG_SCORE = "param";
+    private static final String ARG_SCORE = "param1";
+    private static final String ARG_WIN = "param2";
 
     private int mScore;
+    private boolean mWin;
 
     public EndFragment() {
         // Required empty public constructor
     }
 
-    public static EndFragment newInstance(int param) {
+    public static EndFragment newInstance(int param1, boolean param2) {
         EndFragment fragment = new EndFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_SCORE, param);
+        args.putInt(ARG_SCORE, param1);
+        args.putBoolean(ARG_WIN, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -43,7 +46,7 @@ public class EndFragment extends Fragment implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mScore = getArguments().getInt(ARG_SCORE);
-            System.out.println(mScore);
+            mWin = getArguments().getBoolean(ARG_WIN);
         }
 
     }
@@ -61,12 +64,17 @@ public class EndFragment extends Fragment implements View.OnClickListener{
         view.findViewById(R.id.quit_button).setOnClickListener(this);
         TextView tcScore = view.findViewById(R.id.Score_int);
         tcScore.setText(String.valueOf(mScore));
+        TextView tcWiner  = view.findViewById(R.id.Winer);
+        if(mWin) {
+            tcWiner.setText(R.string.win);
+        }
+        else tcWiner.setText(R.string.lose);
     }
 
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.restart_button){
-            ((ScaffoldActivity)getActivity()).startGame();
+            ((ScaffoldActivity)getActivity()).choseShip();
         }
         if(view.getId() == R.id.quit_button){
             ((ScaffoldActivity)getActivity()).finish();
